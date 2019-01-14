@@ -1,0 +1,9 @@
+<button (click)="goBack()">GO BACK</button>
+
+<div *ngIf="game">
+    <div>
+      <label>Game ID: {{game.id}} <br><br>
+        <input [(ngModel)]="game.id" placeholder="name">
+      </label>
+    </div>
+  </div>

@@ -1,13 +1,5 @@
 <h2>Game Results</h2>
 
-<div *ngIf="selectedGame">
-<div>
-  <label>Game ID: {{selectedGame.id}} <br><br>
-    <input [(ngModel)]="selectedGame.id" placeholder="name">
-  </label>
-</div>
-</div>
-
 <table>
   <tr id='gameResults'>
     <th>Game</th>
@@ -15,14 +7,12 @@
     <th>Team 2</th>
   </tr>
   <tr class='game gameTwo' *ngFor="let game of gameTable" 
-  [class.selected]="game === selectedGame"
-    (click)="onSelect(game)">
-    <td>{{game.id}}</td>
-    <td>{{game.teamOne}}</td>
-    <td>{{game.teamTwo}}</td>
-    <!-- <td>{{gameTable[0].id}}</td> -->
-    <!-- <td>{{game.teamOne}}</td> -->
-    <!-- <td>{{game.teamTwo}}</td> -->
+  routerLink="/detail/{{game.id}}">
+      <td>{{game.id}}</td>
+      <td>{{game.teamOne}}</td>
+      <td>{{game.teamTwo}}</td>
   </tr>
  
 </table>
+
+<!-- <app-game-detail [game]="selectedGame"></app-game-detail> -->

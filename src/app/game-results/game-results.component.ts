@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Gameresults } from '../game-results';
-import { GAMERESULTSTABLE } from '../mock-game-results';
+// import { GAMERESULTSTABLE } from '../mock-game-results';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-game-results',
@@ -8,20 +9,21 @@ import { GAMERESULTSTABLE } from '../mock-game-results';
   styleUrls: ['./game-results.component.scss']
 })
 export class GameResultsComponent implements OnInit {
-  // game: Gameresults = {
-  //   id: 1,
-  //   teamOne: 83,
-  //   teamTwo: 80
-  // };
-  gameTable = GAMERESULTSTABLE;
-  selectedGame: Gameresults;
+  gameTable: Gameresults[];
+  // selectedGame: Gameresults;
  
-  constructor() { }
+  constructor(private gameService: GameService) { }
 
   ngOnInit() {
+    this.getGames();
   }
-  onSelect(game: Gameresults): void {
-    this.selectedGame = game;
+  // onSelect(game: Gameresults): void {
+  //   this.selectedGame = game;
+  // }
+
+  getGames(): void {
+    this.gameService.getGames()
+        .subscribe(gameTable => this.gameTable = gameTable)
   }
 
 }
