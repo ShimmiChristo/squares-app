@@ -26,4 +26,13 @@ export class GameResultsComponent implements OnInit {
         .subscribe(gameTable => this.gameTable = gameTable)
   }
 
+  add(teamOne): void {
+    teamOne = teamOne.trim();
+    if (!teamOne) { return; }
+    this.gameService.addGame({ teamOne } as Gameresults)
+      .subscribe(game => {
+        this.gameTable.push(game);
+      });
+  }
+
 }

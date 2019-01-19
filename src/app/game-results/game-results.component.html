@@ -1,4 +1,13 @@
 <h2>Game Results</h2>
+<div>
+  <label>Hero name:
+    <input #gameName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(gameName.value); gameName.value=''">
+    add
+  </button>
+</div>
 
 <table>
   <tr id='gameResults'>
