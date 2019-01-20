@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Gameresults } from '../game-results';
+import { Gameresults, Squareresults } from '../game-results';
 import { GameService } from '../game.service';
 
 @Component({
@@ -9,15 +9,22 @@ import { GameService } from '../game.service';
 })
 export class DashboardComponent implements OnInit {
   gameTable: Gameresults[] = [];
+  squaresTable: Squareresults[] = [];
 
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
     this.getGames();
+    this.getSquares();
   }
 
   getGames(): void {
     this.gameService.getGames() 
         .subscribe(gameTable => this.gameTable = gameTable.slice(1, 5))
+  }
+
+  getSquares(): void {
+    this.gameService.getSquares()
+      .subscribe(squaresTable => this.squaresTable = squaresTable)
   }
 }

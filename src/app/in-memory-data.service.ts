@@ -15,7 +15,13 @@ export class InMemoryDataService implements InMemoryDataService {
       { id: 5, teamOne: 19, teamTwo: 64}, 
       { id: 6, teamOne: 66, teamTwo: 59}
     ];
-    return {GAMERESULTSTABLE};
+    const SQUARESTABLE = [
+      { id: 1, user: 'Chris'},
+      { id: 2, user: 'Alan'},
+      { id: 3, user: 'Gary'},
+      { id: 4, user: 'Matt'}
+    ]
+    return {GAMERESULTSTABLE, SQUARESTABLE};
   }
   // Overrides the genId method to ensure that a game always has an id.
   // If the GAMERESULTSTABLE array is empty,

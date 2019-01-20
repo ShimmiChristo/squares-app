@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Gameresults } from './game-results';
+import { Gameresults, Squareresults } from './game-results';
 import { GAMERESULTSTABLE } from './mock-game-results';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
@@ -14,6 +14,7 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class GameService {
   private gamesUrl = 'api/GAMERESULTSTABLE';  // URL to web api
+  private squaresUrl = 'api/SQUARESTABLE';
 
   constructor(
     private http: HttpClient,
@@ -28,6 +29,14 @@ export class GameService {
           tap(_=> this.log('fetched games')),
           catchError(this.handleError('getGames', []))
         );
+  }
+
+  getSquares(): Observable<Squareresults[]> {
+    return this.http.get<Squareresults[]>(this.squaresUrl)
+      .pipe(
+        tap(_=> this.log('fetched squares')),
+        catchError(this.handleError('getSquares', []))
+      );
   }
 
   getGame(id: number): Observable<Gameresults> {
