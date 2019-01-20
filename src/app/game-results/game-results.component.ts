@@ -35,4 +35,9 @@ export class GameResultsComponent implements OnInit {
       });
   }
 
+  delete(game: Gameresults): void {
+    this.gameTable = this.gameTable.filter(h => h !== game);
+    this.gameService.deleteGame(game).subscribe();
+  }
+
 }

@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+// import { type } from 'os';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -54,6 +55,16 @@ export class GameService {
       .pipe(
         tap((game: Gameresults) => this.log(`added game w/ id=${game.id}`)),
         catchError(this.handleError<Gameresults>('addGame'))
+      );
+  }
+
+  deleteGame(game: Gameresults | number): Observable<Gameresults> {
+    const id = typeof game === 'number' ? game : game.id;
+    const url = `${this.gamesUrl}/${id}`;
+    return this.http.delete<Gameresults>(url, httpOptions)
+      .pipe(
+        tap(_=> this.log(`deleted game id=${id}`)),
+        catchError(this.handleError<Gameresults>('deleteGame'))
       );
   }
 

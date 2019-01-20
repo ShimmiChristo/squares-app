@@ -1,6 +1,6 @@
 <h2>Game Results</h2>
 <div>
-  <label>Hero name:
+  <label>Game ID:
     <input #gameName />
   </label>
   <!-- (click) passes input value to add() and then clears the input -->
@@ -20,6 +20,8 @@
       <td>{{game.id}}</td>
       <td>{{game.teamOne}}</td>
       <td>{{game.teamTwo}}</td>
+      <td><button class="delete" title="delete game"
+        (click)="delete(game)">x</button></td>
   </tr>
  
 </table>
