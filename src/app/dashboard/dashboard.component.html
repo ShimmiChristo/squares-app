@@ -8,38 +8,3 @@
   </a>
 </div>
 
-  <table>
-    <tr id="squareResults">
-        <th>Game</th>
-        <th>Team 1</th>
-        <th>Team 2</th>
-        <th>Remove</th>
-    </tr>
-    <tr>
-      <!-- <td>{{squaresTable | filter : {'user':'Chris'} }}</td> -->
-    </tr>
-    <tr class='square' *ngFor="let square of squaresTable" >
-        <tr class='square' *ngFor="let square of squaresTable" >
-        <td class='square'>{{square.key}}</td>
-        <td>{{square.user[1]}}</td>
-        <td><button class="delete" title="delete game"
-          (click)="delete(game)">x</button></td>
-    </tr>
-  </table>
-
-<!-- <table>
-    <tr id='gameResults'>
-      <th>Game</th>
-      <th>Team 1</th>
-      <th>Team 2</th>
-      <th>Remove</th>
-    </tr>
-    <tr class='game gameTwo' *ngFor="let game of gameTable" >
-        <td class='game gameTwo' routerLink="/detail/{{game.id}}">{{game.id}}</td>
-        <td>{{game.teamOne}}</td>
-        <td>{{game.teamTwo}}</td>
-        <td><button class="delete" title="delete game"
-          (click)="delete(game)">x</button></td>
-    </tr>
-   
-  </table> -->

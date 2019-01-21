@@ -5,8 +5,9 @@ import { GameService } from '../game.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
+
 export class DashboardComponent implements OnInit {
   gameTable: Gameresults[] = [];
   squaresTable: Squareresults[] = [];
@@ -28,3 +29,4 @@ export class DashboardComponent implements OnInit {
       .subscribe(squaresTable => this.squaresTable = squaresTable)
   }
 }
+
