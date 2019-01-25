@@ -15,6 +15,18 @@ export class InMemoryDataService implements InMemoryDataService {
       { id: 5, teamOne: 19, teamTwo: 64}, 
       { id: 6, teamOne: 66, teamTwo: 59}
     ];
+    const WINNINGNUMS = [
+      { id: 1, teamX: 0, teamY, 1},
+      { id: 1, teamX: 1, teamY, 1},
+      { id: 1, teamX: 2, teamY, 1},
+      { id: 1, teamX: 3, teamY, 1},
+      { id: 1, teamX: 4, teamY, 1},
+      { id: 1, teamX: 5, teamY, 1},
+      { id: 1, teamX: 6, teamY, 1},
+      { id: 1, teamX: 7, teamY, 1},
+      { id: 1, teamX: 8, teamY, 1},
+      { id: 1, teamX: 9, teamY, 1}
+    ];
     const SQUARESTABLE = [
       { id: 1, user: 'Chris'},
       { id: 2, user: 'Alan'},

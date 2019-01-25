@@ -15,6 +15,8 @@ const httpOptions = {
 export class GameService {
   private gamesUrl = 'api/GAMERESULTSTABLE';  // URL to web api
   private squaresUrl = 'api/SQUARESTABLE';
+  private winningNumsUrl = 'api/WINNINGNUMS';
+
 
   constructor(
     private http: HttpClient,
@@ -29,6 +31,13 @@ export class GameService {
           tap(_=> this.log('fetched games')),
           catchError(this.handleError('getGames', []))
         );
+  }
+  getWinningNums(): Obserable<Gameresults[]> {
+    return this.http.get<Gameresults[]>(this.winningNumsUrl)
+      .pipe (
+        tap(_=> this.log('fetched winners')),
+        catchError(this.handleError('getWinningNums', []))
+      );
   }
 
   getSquares(): Observable<Squareresults[]> {
