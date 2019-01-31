@@ -3,7 +3,7 @@
   <label>Game Score:
     <!-- <input #gameName /> -->
     <input #teamOne [(ngModel)]="myValue" />
-    <input #teamTwo />
+    <input #teamTwo [(ngModel)]="xTeamVal" />
   </label>
   <!-- (click) passes input value to add() and then clears the input -->
   <button (click)="add(teamOne.value, teamTwo.value ); teamOne.value=''; teamTwo.value=''">
@@ -31,7 +31,8 @@
 <table>
         <tr id="squareResults">
             <th></th>
-            <th *ngFor="let winner of winningNumsTable">{{winner.teamY}}</th>
+            <th [ngClass]="{ 'text-success': xTeamVal == 66 }"
+                *ngFor="let winner of winningNumsTable">{{winner.teamY}}</th>
         </tr>
         <tr class='square' >
             <td class="bold"  [ngClass]="{ 'text-success': myValue == 66 }" 
