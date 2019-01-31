@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Gameresults, Squareresults } from '../game-results';
+import { Gameresults, Squareresults, Winningnumbers } from '../game-results';
 import { GameService } from '../game.service';
 
 @Component({
@@ -11,7 +11,8 @@ import { GameService } from '../game.service';
 export class DashboardComponent implements OnInit {
   gameTable: Gameresults[] = [];
   squaresTable: Squareresults[] = [];
-
+  winningNums: Winningnumbers[] = [];
+  
   constructor(private gameService: GameService) { }
 
   ngOnInit() {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Squareresults } from './game-results';
+import { Squareresults, Winningnumbers } from './game-results';
 import { GameService } from './game.service';
 
 @Component({
@@ -9,12 +9,13 @@ import { GameService } from './game.service';
 })
 export class AppComponent implements OnInit {
   title = 'My First Angular App!';
-  squaresTable = Squareresults[] = [];
-  winningNumsTable: Squareresults[];
+  squaresTable: Squareresults[] = [];
+  winningNumsTable: Winningnumbers[] = [];
+
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
-    this.getSquares();
+    // this.getSquares();
   }
 
   getSquares(): void {
@@ -27,7 +28,5 @@ export class AppComponent implements OnInit {
       .subscribe(winningNumsTable => this.winningNumsTable = winningNumsTable)
   }
 
-  highlightWinners(): void {
-    
-  }
+
 }

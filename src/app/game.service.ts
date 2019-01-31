@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Gameresults, Squareresults } from './game-results';
-import { GAMERESULTSTABLE } from './mock-game-results';
+import { Gameresults, Squareresults, Winningnumbers } from './game-results';
+// import { GAMERESULTSTABLE } from './mock-game-results';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -32,11 +32,19 @@ export class GameService {
           catchError(this.handleError('getGames', []))
         );
   }
-  getWinningNums(): Obserable<Gameresults[]> {
-    return this.http.get<Gameresults[]>(this.winningNumsUrl)
+  getWinningNums(): Observable<Winningnumbers[]> {
+    return this.http.get<Winningnumbers[]>(this.winningNumsUrl)
       .pipe (
         tap(_=> this.log('fetched winners')),
         catchError(this.handleError('getWinningNums', []))
+      );
+  }
+
+  highlightWinners(): Observable<Winningnumbers[]> {
+    return this.http.get<Winningnumbers[]>(this.winningNumsUrl)
+      .pipe (
+        tap(_=> this.log('highlighted winners')),
+        catchError(this.handleError('highlightWinners', []))
       );
   }
 
