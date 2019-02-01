@@ -17,7 +17,7 @@ export class GameResultsComponent implements OnInit {
 
   ngOnInit() {
     this.getGames();
-    this.getWinningNums();
+    // this.getWinningNums();
     this.getSquares();
     this.highlightWinners();
   }
@@ -38,11 +38,12 @@ export class GameResultsComponent implements OnInit {
   }
 
   highlightWinners(): void {
+    let games = this.gameService.getGames();
     this.gameService.getWinningNums()
       .subscribe(winningNumsTable => {
         this.winningNumsTable = winningNumsTable;
         this.winningNumsTable.forEach(nums => {
-          // console.log(nums);
+          console.log(nums);
 
         })
     }); 

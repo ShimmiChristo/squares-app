@@ -10,22 +10,22 @@ export class InMemoryDataService implements InMemoryDataService {
   createDb() {
     const GAMERESULTSTABLE = [
       { id: 2, teamOne: 70, teamTwo: 56}, 
-      { id: 3, teamOne: 56, teamTwo: 56}, 
+      { id: 3, teamOne: 51, teamTwo: 56}, 
       { id: 4, teamOne: 42, teamTwo: 71}, 
       { id: 5, teamOne: 19, teamTwo: 64}, 
       { id: 6, teamOne: 66, teamTwo: 59}
     ];
     const WINNINGNUMS = [
-      { id: 1, teamX: 70, teamY: 70},
-      { id: 2, teamX: 56, teamY: 56},
-      { id: 3, teamX: 2, teamY: 1},
-      { id: 4, teamX: 3, teamY: 1},
-      { id: 5, teamX: 4, teamY: 1},
-      { id: 6, teamX: 5, teamY: 1},
-      { id: 7, teamX: 6, teamY: 1},
-      { id: 8, teamX: 7, teamY: 1},
-      { id: 9, teamX: 8, teamY: 1},
-      { id: 10, teamX: 9, teamY: 1}
+      { id: 1, teamY: 0, teamX: 7},
+      { id: 2, teamY: 1, teamX: 6},
+      { id: 3, teamY: 2, teamX: 4},
+      { id: 4, teamY: 3, teamX: 8},
+      { id: 5, teamY: 4, teamX: 1},
+      { id: 6, teamY: 5, teamX: 0},
+      { id: 7, teamY: 6, teamX: 5},
+      { id: 8, teamY: 7, teamX: 9},
+      { id: 9, teamY: 8, teamX: 3},
+      { id: 10, teamY: 9, teamX: 2}
     ];
     const SQUARESTABLE = [
       { id: 1, user: 'Chris'},
