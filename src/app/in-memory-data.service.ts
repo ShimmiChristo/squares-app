@@ -21,7 +21,7 @@ export class InMemoryDataService implements InMemoryDataService {
       { id: 3, teamY: 2, teamX: 4},
       { id: 4, teamY: 3, teamX: 8},
       { id: 5, teamY: 4, teamX: 1},
-      { id: 6, teamY: 5, teamX: 0},
+      { id: 6, teamY: 5, teamX: 8},
       { id: 7, teamY: 6, teamX: 5},
       { id: 8, teamY: 7, teamX: 9},
       { id: 9, teamY: 8, teamX: 3},
