@@ -17,47 +17,57 @@ export class GameResultsComponent implements OnInit {
 
   ngOnInit() {
     this.getGames();
-    // this.getWinningNums();
+    this.getWinningNums();
     this.getSquares();
     this.highlightWinners();
   }
 
   getGames(): void {
-    this.gameService.getWinningNums()
-        .subscribe(winningNumsTable => {
-          this.winningNumsTable = winningNumsTable;
-          this.winningNumsTable.forEach(nums => {
-          // console.log(nums);
-        })
-      })
-
     this.gameService.getGames()
-        .subscribe(gameTable => {
-          this.gameTable = gameTable;
-          this.winningNumsTable.forEach(nums => {
-            // console.log(nums);
-          })
-          this.gameTable.forEach(games => {
-            // if(games.teamOne == 70){
-              // console.log(games.teamOne.toString().substr(-1));
-              // console.log(games.teamTwo.toString().substr(-1));
-              this.winningNumsTable.forEach(nums => {
-                // console.log(nums);
-                if (games.teamOne.toString().substr(-1) == nums.teamX.toString()) {
-                  console.log(games);
-                  // return games;
-                }
-              })
-            // }
-          })
-        })
+        .subscribe(gameTable => this.gameTable = gameTable)
   }
 
-  // getWinningNums(): void {
-    // this.winningNumsTable.forEach(nums => {
-      // console.log(nums);
-    // })
-  // }
+  getWinningNums(): void {
+    var winners = [];
+    this.gameService.getWinningNums()
+      .subscribe(winningNumsTable => {
+        this.winningNumsTable = winningNumsTable;
+        // this.winningNumsTable.forEach(nums => {
+        // console.log(nums);
+        // })
+      })
+    this.gameService.getGames()
+    .subscribe(gameTable => {
+        this.gameTable = gameTable;
+        // this.winningNumsTable.forEach(nums => {
+        //   // console.log(nums);
+        // })
+        this.gameTable.forEach(games => {
+          // if(games.teamOne == 70){
+            // console.log(games.teamOne.toString().substr(-1));
+            // console.log(games.teamTwo.toString().substr(-1));
+            this.winningNumsTable.forEach(nums => {
+              // console.log(nums);
+              if (games.teamOne.toString().substr(-1) == nums.teamX.toString() && 
+              games.teamTwo.toString().substr(-1) == nums.teamY.toString() ) {
+                console.log(nums);
+                // return nums;
+                // winners.push(games);
+                // console.log(winners);
+                // winners.forEach(game => {
+                  // if (game.teamTwo.toString().substr(-1) == nums.teamY.toString()) {
+                    // console.log(game);
+                  // }
+                // })
+                // console.log(nums);
+                // this.gameTable = [games];
+                // return games;
+              }
+            })
+          // }
+        })
+      })
+  }
 
   getSquares(): void {
     this.gameService.getSquares()
@@ -73,15 +83,18 @@ export class GameResultsComponent implements OnInit {
           // console.log(nums);
 
         })
-    }); 
-    this.gameService.getGames()
-      .subscribe(gameTable => {
-        this.gameTable = this.gameTable;
-        this.gameTable.forEach(game => {
-          // console.log(game);
-      })
-    });
-}
+      }); 
+      this.gameService.getGames()
+        .subscribe(gameTable => {
+          this.gameTable = this.gameTable;
+          this.gameTable.forEach(game => {
+              // if (games.teamOne.toString().substr(-1) == nums.teamX.toString()) {
+
+              // }
+                // console.log(game);
+        })
+      });
+  }
 
   add(teamOne, teamTwo): void {
     teamOne = teamOne.trim();

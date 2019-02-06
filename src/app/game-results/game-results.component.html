@@ -6,7 +6,7 @@
     <input #teamTwo [(ngModel)]="xTeamVal"  />
   </label>
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(teamOne.value, teamTwo.value ); teamOne.value=''; teamTwo.value=''">
+  <button (click)="add(teamOne.value, teamTwo.value ); teamOne.value=''; teamTwo.value=''" (click)="getWinningNums();">
     add
   </button>
 </div>
@@ -32,7 +32,7 @@
         <tr id="squareResults">
             <th></th>
             <!-- <th [ngClass]="{ 'text-success': xTeamVal ? xTeamVal.toString().substr(-1) ===  gameTable[0].teamOne.toString().substr(-1) : 'fail' }" -->
-            <th *ngFor="let winner of winningNumsTable">{{winner.teamX}}</th>
+            <th *ngFor="let winner of winningNumsTable | slice:0:10">{{winner.teamX}}</th>
         </tr>
         <tr class='square' >
             <!-- <td class="bold"  [ngClass]="{ 'text-success':  i.teamOne.toString().substr(-1) == winner.teamY , 'failure' : false }"  -->
