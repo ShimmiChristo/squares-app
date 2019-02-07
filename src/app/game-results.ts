@@ -7,6 +7,8 @@ export class Gameresults {
 export class Squareresults {
     id: number;
     user: string;
+    teamX: number;
+    teamY: number;
 }
 
 export class Winningnumbers {
