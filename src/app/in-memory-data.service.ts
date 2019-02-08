@@ -9,12 +9,12 @@ export class InMemoryDataService implements InMemoryDataService {
 
   createDb() {
     const GAMERESULTSTABLE = [
-      { id: 1, teamOne: 70, teamTwo: 56}, 
+      { id: 1, teamOne: 71, teamTwo: 57}, 
       { id: 2, teamOne: 70, teamTwo: 56}, 
       { id: 3, teamOne: 51, teamTwo: 56}, 
       { id: 4, teamOne: 42, teamTwo: 71}, 
       { id: 5, teamOne: 19, teamTwo: 64}, 
-      { id: 6, teamOne: 66, teamTwo: 59}
+      { id: 6, teamOne: 67, teamTwo: 59}
     ];
     const WINNINGNUMS = [
       { id: 1, teamY: 0, teamX: 7},
@@ -160,7 +160,7 @@ export class InMemoryDataService implements InMemoryDataService {
       { id: 17, user: 'Matt', teamY: 1, teamX: 5 },
       { id: 18, user: 'Matt', teamY: 1, teamX: 9 },
       { id: 19, user: 'Matt9', teamY: 1, teamX: 3 },
-      { id: 20, user: 'Matt10', teamY: 1, teamX: 2 },
+      { id: 20, user: 'Matt20', teamY: 1, teamX: 2 },
 
       { id: 21, user: 'Chris', teamY: 2, teamX: 7 },
       { id: 22, user: 'Alan', teamY: 2, teamX: 6 },
