@@ -28,46 +28,26 @@ export class GameResultsComponent implements OnInit {
   }
 
   getWinningNums(): void {
-    var winners = [];
+    // var winners = [];
     this.gameService.getWinningNums()
-      .subscribe(winningNumsTable => {
-        this.winningNumsTable = winningNumsTable;
-        // this.winningNumsTable.forEach(nums => {
-        // console.log(nums);
-        // })
-      })
+      .subscribe(winningNumsTable => this.winningNumsTable = winningNumsTable);
+
+    this.gameService.getSquares()
+      .subscribe(squaresTable => this.squaresTable = squaresTable);
+      
     this.gameService.getGames()
-    .subscribe(gameTable => {
-        this.gameTable = gameTable;
-        // this.winningNumsTable.forEach(nums => {
-        //   // console.log(nums);
-        // })
+      .subscribe(gameTable => { this.gameTable = gameTable;
         this.gameTable.forEach(games => {
-          // if(games.teamOne == 70){
-            // console.log(games.teamOne.toString().substr(-1));
-            // console.log(games.teamTwo.toString().substr(-1));
-            this.winningNumsTable.forEach(nums => {
-              // console.log(nums);
-              if (games.teamOne.toString().substr(-1) == nums.teamX.toString() && 
-              games.teamTwo.toString().substr(-1) == nums.teamY.toString() ) {
-                console.log(nums);
-                // return nums;
-                // winners.push(games);
-                // console.log(winners);
-                // winners.forEach(game => {
-                  // if (game.teamTwo.toString().substr(-1) == nums.teamY.toString()) {
-                    // console.log(game);
-                  // }
-                // })
-                // console.log(nums);
-                // this.gameTable = [games];
-                // return games;
-              }
+          this.squaresTable.forEach(nums => {
+            if (games.teamOne.toString().substr(-1) == nums.teamX.toString() && 
+                games.teamTwo.toString().substr(-1) == nums.teamY.toString() ) {
+                  this.winningNumsTable.push(nums);
+                }
+              })
             })
-          // }
-        })
-      })
-  }
+          })
+          console.log(this.winningNumsTable);
+        }
 
   getSquares(): void {
     this.gameService.getSquares()

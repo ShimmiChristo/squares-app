@@ -13,6 +13,7 @@ export class Squareresults {
 
 export class Winningnumbers {
     id: number;
+    user: string;
     teamX: number;
     teamY: number;
 }
