@@ -28,7 +28,6 @@ export class GameResultsComponent implements OnInit {
   }
 
   getWinningNums(): void {
-    // var winners = [];
     this.gameService.getWinningNums()
       .subscribe(winningNumsTable => this.winningNumsTable = winningNumsTable);
 
@@ -41,12 +40,15 @@ export class GameResultsComponent implements OnInit {
           this.squaresTable.forEach(nums => {
             if (games.teamOne.toString().substr(-1) == nums.teamX.toString() && 
                 games.teamTwo.toString().substr(-1) == nums.teamY.toString() ) {
-                  this.winningNumsTable.push(nums);
+                  this.gameService.getWinningNums()
+                  .subscribe(game => {
+                    this.winningNumsTable.push(nums);
+                    console.log(this.winningNumsTable);
+                    });
                 }
               })
             })
           })
-          console.log(this.winningNumsTable);
         }
 
   getSquares(): void {
