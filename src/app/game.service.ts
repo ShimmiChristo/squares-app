@@ -94,6 +94,14 @@ export class GameService {
       );
   }
 
+  addWinner(game: Winningnumbers): Observable<Winningnumbers> {
+    return this.http.post<Winningnumbers>(this.winningNumsUrl, game, httpOptions)
+      .pipe(
+        tap((game: Winningnumbers) => this.log(`added game w/ id=${game.id}`)),
+        catchError(this.handleError<Winningnumbers>('addGame'))
+      );
+  }
+
   /** Log a GameService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`GameService: ${message}`);

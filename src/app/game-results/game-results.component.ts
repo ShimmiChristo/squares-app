@@ -28,9 +28,12 @@ export class GameResultsComponent implements OnInit {
   }
 
   getWinningNums(): void {
-    this.gameService.getWinningNums()
-      .subscribe(winningNumsTable => this.winningNumsTable = winningNumsTable);
-
+    // this.gameService.getWinningNums()
+      // .subscribe(winningNumsTable => this.winningNumsTable = winningNumsTable);
+    // teamOne = teamOne.trim();
+    // teamTwo = teamTwo.trim();
+    // if (!teamOne || !teamTwo) { return; }
+    
     this.gameService.getSquares()
       .subscribe(squaresTable => this.squaresTable = squaresTable);
       
@@ -42,14 +45,16 @@ export class GameResultsComponent implements OnInit {
                 games.teamTwo.toString().substr(-1) == nums.teamY.toString() ) {
                   this.gameService.getWinningNums()
                   .subscribe(game => {
-                    this.winningNumsTable.push(nums);
-                    console.log(this.winningNumsTable);
+                    // if (this.winningNumsTable.findIndex(x => x.id == nums.id) === -1){
+                      this.winningNumsTable.push(nums);
+                      console.log(this.winningNumsTable);
+                    // }
                     });
-                }
+                  }
               })
             })
           })
-        }
+    }
 
   getSquares(): void {
     this.gameService.getSquares()
@@ -85,6 +90,7 @@ export class GameResultsComponent implements OnInit {
     this.gameService.addGame({ teamOne, teamTwo } as Gameresults)
       .subscribe(game => {
         this.gameTable.push(game);
+        console.log(this.gameTable);
       });
   }
 
@@ -92,5 +98,33 @@ export class GameResultsComponent implements OnInit {
     this.gameTable = this.gameTable.filter(h => h !== game);
     this.gameService.deleteGame(game).subscribe();
   }
+
+  addWinner(): void {
+    this.gameService.getSquares()
+    .subscribe(squaresTable => this.squaresTable = squaresTable);
+    
+    this.gameService.getGames()
+      .subscribe(gameTable => { this.gameTable = gameTable;
+        this.gameTable.forEach(games => {
+          this.squaresTable.forEach(nums => {
+            if (games.teamOne.toString().substr(-1) == nums.teamX.toString() && 
+                games.teamTwo.toString().substr(-1) == nums.teamY.toString() ) {
+                  
+                  this.gameService.addWinner({} as Winningnumbers)
+                  .subscribe(game => {
+                      this.winningNumsTable.push(game);
+                      console.log(this.winningNumsTable);
+                    });
+                  // this.gameService.getWinningNums()
+                  // .subscribe(game => {
+                  //     this.winningNumsTable.push(nums);
+                  //     console.log(this.winningNumsTable);
+                  //   });
+                  }
+              })
+            })
+          })
+   
+    }
 
 }

@@ -6,7 +6,7 @@
     <input #teamTwo [(ngModel)]="xTeamVal"  />
   </label>
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(teamOne.value, teamTwo.value ); teamOne.value=''; teamTwo.value=''" (click)="getWinningNums();">
+  <button (click)="add(teamOne.value, teamTwo.value ); teamOne.value=''; teamTwo.value=''" (click)="winningNumsTable = []; getWinningNums(); ">
     add
   </button>
 </div>
@@ -24,9 +24,15 @@
       <td>{{game.teamTwo}}</td>
       <td><button class="delete" title="delete game"
         (click)="delete(game)">x</button></td>
-  </tr>
+    </tr>
+    <tr class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
+        {{winningNum.user}}
+    </tr>
  
 </table>
+<!-- <div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
+    {{winningNum.user}}
+</div> -->
 
 <table>
         <tr id="squareResults">
@@ -34,183 +40,50 @@
             <!-- <th [ngClass]="{ 'text-success': xTeamVal ? xTeamVal.toString().substr(-1) ===  gameTable[0].teamOne.toString().substr(-1) : 'fail' }" -->
             <th *ngFor="let winner of squaresTable | slice:0:10">{{winner.teamX}}</th>
         </tr>
-        <tr class='square' >
-            <td class="bold" *ngFor="let square of squaresTable | slice:0:1"> {{square.teamY}} </td>
-            <td [ngClass]="{ 
-                'text-success':  gameTable[0].teamOne.toString().substr(-1) == squaresTable[i].teamY && gameTable[0].teamTwo.toString().substr(-1) == squaresTable[i].teamX, 
-                'failure' : false }"
-                *ngFor="let square of squaresTable | slice:0:10; let i = index">{{square.user}}</td>
+        <tr class='square' >    
+            <td class="bold" *ngFor="let square of squaresTable | slice:1:2"> {{square.teamY}} </td>
+            <td *ngFor="let square of squaresTable | slice:0:10;"   [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' :  square == false }" >{{square.user}}</td>
         </tr>
-        <!-- <tr class='square' >    
-            <td class="bold" *ngFor="let square of squaresTable | slice:11:12"> {{square.teamY}} </td>
-            <td *ngFor="let square of squaresTable | slice:10:20; let i = index"  *ngFor="let game of gameTable; let j = index" 
-                [ngClass]="{ 
-                'text-success':  game[j].teamOne.toString().substr(-1) == squaresTable[i].teamY, 
-                'failure' : false }"
-                >{{square.user}}</td>
-
-        </tr> -->
         <tr class='square' >    
             <td class="bold" *ngFor="let square of squaresTable | slice:11:12"> {{square.teamY}} </td>
-            <td *ngFor="let square of squaresTable | slice:10:20;"  [ngClass]="{ 'text-success':  winningNumsTable.indexOf(this.id), 'failure' : false }" >{{square.user}}</td>
+            <td *ngFor="let square of squaresTable | slice:10:20;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' :  square == false }" >{{square.user}}</td>
         </tr>
         <tr class='square' >    
             <td class="bold" *ngFor="let square of squaresTable | slice:21:22"> {{square.teamY}} </td>
-            <td *ngFor="let square of squaresTable | slice:20:21;"  [ngClass]="{ 'text-success':  gameTable[0].teamTwo.toString().substr(-1) == square.teamY && gameTable[0].teamOne.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:21:22;"  [ngClass]="{ 'text-success':  gameTable[0].teamTwo.toString().substr(-1) == square.teamY && gameTable[0].teamOne.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:22:23;"  [ngClass]="{ 'text-success':  gameTable[0].teamTwo.toString().substr(-1) == square.teamY && gameTable[0].teamOne.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:23:24;"  [ngClass]="{ 'text-success':  gameTable[0].teamTwo.toString().substr(-1) == square.teamY && gameTable[0].teamOne.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:24:25;"  [ngClass]="{ 'text-success':  gameTable[0].teamTwo.toString().substr(-1) == square.teamY && gameTable[0].teamOne.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:25:26;"  [ngClass]="{ 'text-success':  gameTable[0].teamTwo.toString().substr(-1) == square.teamY && gameTable[0].teamOne.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:26:27;"  [ngClass]="{ 'text-success':  gameTable[0].teamTwo.toString().substr(-1) == square.teamY && gameTable[0].teamOne.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:27:28;"  [ngClass]="{ 'text-success':  gameTable[0].teamTwo.toString().substr(-1) == square.teamY && gameTable[0].teamOne.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:28:29;"  [ngClass]="{ 'text-success':  gameTable[0].teamTwo.toString().substr(-1) == square.teamY && gameTable[0].teamOne.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:29:30;"  [ngClass]="{ 'text-success':  gameTable[0].teamTwo.toString().substr(-1) == square.teamY && gameTable[0].teamOne.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
+            <td *ngFor="let square of squaresTable | slice:20:30;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' :  square == false }" >{{square.user}}</td>
         </tr>
         <tr class='square' >    
             <td class="bold" *ngFor="let square of squaresTable | slice:31:32"> {{square.teamY}} </td>
-            <td *ngFor="let square of squaresTable | slice:30:31;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:31:32;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:32:33;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:33:34;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:34:35;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:35:36;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:36:37;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:37:38;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:38:39;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:39:40;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
+            <td *ngFor="let square of squaresTable | slice:30:40;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' :  square == false }" >{{square.user}}</td>
         </tr>
         <tr class='square' >    
             <td class="bold" *ngFor="let square of squaresTable | slice:41:42"> {{square.teamY}} </td>
-            <td *ngFor="let square of squaresTable | slice:40:41;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:41:42;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:42:43;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:43:44;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:44:45;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:45:46;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:46:47;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:47:48;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:48:49;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:49:50;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
+            <td *ngFor="let square of squaresTable | slice:40:50;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >{{square.user}}</td>
         </tr>
         <tr class='square' >    
             <td class="bold" *ngFor="let square of squaresTable | slice:51:52"> {{square.teamY}} </td>
-            <td *ngFor="let square of squaresTable | slice:50:51;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:51:52;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:52:53;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:53:54;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:54:55;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:55:56;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:56:57;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:57:58;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:58:59;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:59:60;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
+            <td *ngFor="let square of squaresTable | slice:50:60;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >{{square.user}}</td>
         </tr>
         <tr class='square' >    
             <td class="bold" *ngFor="let square of squaresTable | slice:61:62"> {{square.teamY}} </td>
-            <td *ngFor="let square of squaresTable | slice:60:61;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:61:62;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:62:63;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:63:64;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:64:65;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:65:66;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:66:67;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:67:68;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:68:69;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:69:70;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
+            <td *ngFor="let square of squaresTable | slice:60:70;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >{{square.user}}</td>
         </tr>
         <tr class='square' >    
             <td class="bold" *ngFor="let square of squaresTable | slice:71:72"> {{square.teamY}} </td>
-            <td *ngFor="let square of squaresTable | slice:70:71;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:71:72;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:72:73;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:73:74;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:74:75;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:75:76;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:76:77;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:77:78;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:78:79;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:79:80;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
+            <td *ngFor="let square of squaresTable | slice:70:80;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >{{square.user}}</td>
         </tr>
         <tr class='square' >    
             <td class="bold" *ngFor="let square of squaresTable | slice:81:82"> {{square.teamY}} </td>
-            <td *ngFor="let square of squaresTable | slice:80:81;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:81:82;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:82:83;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:83:84;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:84:85;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:85:86;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:86:87;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:87:88;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:88:89;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:89:90;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
+            <td *ngFor="let square of squaresTable | slice:80:90;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >{{square.user}}</td>
         </tr>
         <tr class='square' >    
             <td class="bold" *ngFor="let square of squaresTable | slice:91:92"> {{square.teamY}} </td>
-            <td *ngFor="let square of squaresTable | slice:90:91;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:91:92;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:92:93;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:93:94;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:94:95;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:95:96;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:96:97;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:97:98;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:98:99;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
-            <td *ngFor="let square of squaresTable | slice:99:100;"  [ngClass]="{ 'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY && gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 'failure' : false }" >{{square.user}}</td>
+            <td *ngFor="let square of squaresTable | slice:90:100;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >{{square.user}}</td>
         </tr>
 
-
-
-        <!-- <tr class='square' >
-            <td class="bold" *ngFor="let square of squaresTable | slice:21:22"> {{square.teamY}} </td>
-            <td *ngFor="let square of squaresTable | slice:20:30; let i = index" 
-                [ngClass]="{ 
-                'text-success':  gameTable[0].teamOne.toString().substr(-1) == squaresTable[i].teamY && gameTable[0].teamTwo.toString().substr(-1) == squaresTable[i].teamX, 
-                'failure' : false }"
-                >{{square.user}}</td>
-        </tr> -->
-        <!-- <tr class='square' >
-            <td class="bold" *ngFor="let square of squaresTable | slice:31:32"> {{square.teamY}} </td>
-            <td [ngClass]="{ 
-                'text-success':  gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 
-                'failure' : false }"
-                *ngFor="let square of squaresTable | slice:30:40;">{{square.user}}</td>
-        </tr> -->
-        <!-- <tr class='square' >
-            <td class="bold" *ngFor="let square of squaresTable | slice:41:42"> {{square.teamY}} </td>
-            <td  [ngClass]="{ 
-                'text-success':  gameTable[0].teamOne.toString().substr(-1) == square.teamY || gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 
-                'failure' : false }"
-                *ngFor="let square of squaresTable | slice:40:50;">{{square.user}}</td>
-        </tr> -->
-        <!-- <tr class='square' >
-            <td class="bold" *ngFor="let square of squaresTable | slice:51:52"> {{square.teamY}} </td>
-            <td *ngFor="let square of squaresTable | slice:50:60;">{{square.user}}</td>
-        </tr>
-        <tr class='square' >
-            <td class="bold" *ngFor="let square of squaresTable | slice:61:62"> {{square.teamY}} </td>
-            <td *ngFor="let square of squaresTable | slice:60:70;">{{square.user}}</td>
-        </tr>
-        <tr class='square' >
-            <td class="bold" *ngFor="let square of squaresTable | slice:71:72"> {{square.teamY}} </td>
-            <td [ngClass]="{ 
-                'text-success':  gameTable[0].teamTwo.toString().substr(-1) == square.teamX, 
-                'failure' : false }"
-                *ngFor="let square of squaresTable | slice:70:80;">{{square.user}}</td>
-        </tr>
-        <tr class='square' >
-            <td class="bold" *ngFor="let square of squaresTable | slice:81:82"> {{square.teamY}} </td>
-            <td *ngFor="let square of squaresTable | slice:80:90;">{{square.user}}</td>
-        </tr>
-        <tr class='square' >
-            <td class="bold" *ngFor="let square of squaresTable | slice:91:92"> {{square.teamY}} </td>
-            <td *ngFor="let square of squaresTable | slice:90:100;">{{square.user}}</td>
-        </tr> -->
       </table>
 
-<div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
-    {{winningNum.user}}
-</div>
+
 
 
 <!-- <app-game-detail [game]="selectedGame"></app-game-detail> -->
