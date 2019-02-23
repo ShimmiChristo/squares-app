@@ -33,7 +33,8 @@ export class GameResultsComponent implements OnInit {
     // teamOne = teamOne.trim();
     // teamTwo = teamTwo.trim();
     // if (!teamOne || !teamTwo) { return; }
-    
+    this.winningNumsTable = [];
+
     this.gameService.getSquares()
       .subscribe(squaresTable => this.squaresTable = squaresTable);
       
@@ -47,7 +48,7 @@ export class GameResultsComponent implements OnInit {
                   .subscribe(game => {
                     // if (this.winningNumsTable.findIndex(x => x.id == nums.id) === -1){
                       this.winningNumsTable.push(nums);
-                      console.log(this.winningNumsTable);
+                      // console.log(this.winningNumsTable);
                     // }
                     });
                   }
