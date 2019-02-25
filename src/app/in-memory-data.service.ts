@@ -1,11 +1,11 @@
+import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Gameresults } from './game-results';
 import { Injectable } from '@angular/core';
-import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InMemoryDataService implements InMemoryDataService {
+export class InMemoryDataService implements InMemoryDbService {
 
   createDb() {
     const WINNINGNUMS = [];
