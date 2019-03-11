@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'game-results', component: GameResultsComponent },
-  { path: 'detail/:id', component: GameDetailComponent }
+  { path: 'detail/:id', component: GameDetailComponent },
+  { path: 'api', redirectTo: 'http://localhost:4000/api/games' }
 ];
 
 @NgModule({

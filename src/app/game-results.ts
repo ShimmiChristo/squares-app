@@ -1,18 +1,18 @@
 export class Gameresults {
-    id: number;
+    _id: string;
     teamOne: number;
     teamTwo: number;
 }
 
 export class Squareresults {
-    id: number;
+    _id: number;
     user: string;
     teamX: number;
     teamY: number;
 }
 
 export class Winningnumbers {
-    id: number;
+    _id: number;
     user: string;
     teamX: number;
     teamY: number;

@@ -13,7 +13,8 @@ const httpOptions = {
 
 @Injectable({ providedIn: 'root' })
 export class GameService {
-  private gamesUrl = 'api/GAMERESULTSTABLE';  // URL to web api
+  // private gamesUrl = 'api/GAMERESULTSTABLE';  // URL to web api
+  private gamesUrl = 'http://localhost:4000/api/games';
   private squaresUrl = 'api/SQUARESTABLE';
   private winningNumsUrl = 'api/WINNINGNUMS';
 
@@ -59,7 +60,7 @@ export class GameService {
   getGame(id: number): Observable<Gameresults> {
     //TODO: send the message _after_ fetching the game-result
     // this.messageService.add(`GameService: fetched game id=${id}`);
-    // return of (GAMERESULTSTABLE.find(game => game.id === id));
+    // return of (GAMERESULTSTABLE.find(game => game._id === id));
     const url = `${this.gamesUrl}/${id}`;
     return this.http.get<Gameresults>(url)
       .pipe(
@@ -71,7 +72,7 @@ export class GameService {
   updateGame(game: Gameresults): Observable<any> {
     return this.http.put(this.gamesUrl, game, httpOptions)
       .pipe(
-        tap(_=> this.log(`saved game id=${game.id}`)),
+        tap(_=> this.log(`saved game id=${game._id}`)),
         catchError(this.handleError<any>('updateGame'))
       );
   }
@@ -79,14 +80,15 @@ export class GameService {
   addGame(game: Gameresults): Observable<Gameresults> {
     return this.http.post<Gameresults>(this.gamesUrl, game, httpOptions)
       .pipe(
-        tap((game: Gameresults) => this.log(`added game w/ id=${game.id}`)),
+        tap((game: Gameresults) => this.log(`added game w/ id=${game._id}`)),
         catchError(this.handleError<Gameresults>('addGame'))
       );
   }
 
-  deleteGame(game: Gameresults | number): Observable<Gameresults> {
-    const id = typeof game === 'number' ? game : game.id;
-    const url = `${this.gamesUrl}/${id}`;
+  // deleteGame(game: Gameresults | string): Observable<Gameresults> {
+  deleteGame(game: Gameresults | string): Observable<Gameresults> {
+    const id = typeof game === 'string' ? game : game._id;
+    const url = `${this.gamesUrl}/delete/${id}`;
     return this.http.delete<Gameresults>(url, httpOptions)
       .pipe(
         tap(_=> this.log(`deleted game id=${id}`)),
@@ -97,7 +99,7 @@ export class GameService {
   addWinner(game: Winningnumbers): Observable<Winningnumbers> {
     return this.http.post<Winningnumbers>(this.winningNumsUrl, game, httpOptions)
       .pipe(
-        tap((game: Winningnumbers) => this.log(`added game w/ id=${game.id}`)),
+        tap((game: Winningnumbers) => this.log(`added game w/ id=${game._id}`)),
         catchError(this.handleError<Winningnumbers>('addGame'))
       );
   }

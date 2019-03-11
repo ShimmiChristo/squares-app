@@ -20,7 +20,7 @@
     <th>Remove</th>
   </tr>
   <tr class='game gameTwo' *ngFor="let game of gameTable; let i = index;" >
-      <td class='game gameTwo' routerLink="/detail/{{game.id}}">{{game.id}}</td>
+      <td class='game gameTwo' routerLink="/detail/{{game._id}}">{{game._id}}</td>
       <td>{{game.teamOne}}</td>
       <td>{{game.teamTwo}}</td>
       <td><button class="delete" title="delete game"

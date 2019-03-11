@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 
 var gameResultsSchema = new Schema({
-  _id: String, 
+  id: Number, 
   teamOne: Number, 
   teamTwo: Number
 }, {

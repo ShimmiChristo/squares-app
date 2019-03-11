@@ -6,6 +6,7 @@ const express = require('express'),
     mongoose = require('mongoose'),
     config = require('./config/DB');
     coinRoutes = require('./expressRoutes/coinRoutes');
+    gameRoutes = require('./expressRoutes/gameRoutes');
 
 
     mongoose.Promise = global.Promise;
@@ -19,7 +20,8 @@ const express = require('express'),
     app.use(cors());
     const port = process.env.PORT || 4000;
 
-    app.use('/coins', coinRoutes);
+    app.use('/api/coins', coinRoutes);
+    app.use('/api/games', gameRoutes);
 
     const server = app.listen(port, function(){
         console.log('Listening on port ' + port);
