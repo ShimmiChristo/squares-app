@@ -23,7 +23,8 @@ export class GameDetailComponent implements OnInit {
     this.getGame();
   }
   getGame(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    // const id = +this.route.snapshot.paramMap.get('id'); //converts to number
+    const id = this.route.snapshot.paramMap.get('id');
     this.gameService.getGame(id)
         .subscribe(game => this.game = game);
   }

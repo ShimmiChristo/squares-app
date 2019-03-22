@@ -3,9 +3,15 @@ var Schema = mongoose.Schema;
 
 
 var gameResultsSchema = new Schema({
-  _id: String, 
-  teamOne: Number, 
-  teamTwo: Number
+  game: {
+    type: Number
+  },
+  teamOne: {
+    type: Number
+  }, 
+  teamTwo: {
+    type: Number
+  }
 }, {
   collection: 'gameresults'
 });

@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'game-results', component: GameResultsComponent },
   { path: 'detail/:id', component: GameDetailComponent },
+  { path: 'delete/:id', component: GameResultsComponent },
   { path: 'api', redirectTo: 'http://localhost:4000/api/games' }
 ];
 

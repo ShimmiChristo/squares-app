@@ -6,8 +6,8 @@
     <input #teamTwo   />
   </label>
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(teamOne.value, teamTwo.value ); teamOne.value=''; teamTwo.value=''" 
-        (click)="winningNumsTable = []; getWinningNums(); ">
+  <button (click)="add(teamOne.value, teamTwo.value ); teamOne.value=''; teamTwo.value=''" >
+  <!-- <button (click)="add(teamOne.value, teamTwo.value ); teamOne.value=''; teamTwo.value=''"  (click)="winningNumsTable = []; getWinningNums(); "> -->
     add
   </button>
 </div>
@@ -23,12 +23,9 @@
       <td class='game gameTwo' routerLink="/detail/{{game._id}}">{{game._id}}</td>
       <td>{{game.teamOne}}</td>
       <td>{{game.teamTwo}}</td>
-      <td><button class="delete" title="delete game"
-        (click)="delete(game)">x</button></td>
+      <td><button class="delete" title="delete game" routerLink="/delete/{{game._id}}" (click)="delete(game)" >x</button></td>
     </tr>
-    <tr class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
-        {{winningNum.user}}
-    </tr>
+    <tr class='game gameTwo' *ngFor="let winningNum of winningNumsTable" > {{winningNum.user}} </tr>
  
 </table>
 <!-- <div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >

@@ -15,10 +15,10 @@ var gameTwo = new Gameresults({game: 1, teamOne: 100, teamTwo: 99});
 
 // Defined store route
 gameRoutes.route('/add').post(function (req, res) {
-  var coin = new Gameresults(req.body);
-   coin.save()
+  var game = new Gameresults(req.body);
+   game.save()
     .then(item => {
-    res.status(200).json({'coin': 'Coin added successfully'});
+    res.status(200).json(game);
     })
     .catch(err => {
     res.status(400).send("unable to save to database");
@@ -27,25 +27,35 @@ gameRoutes.route('/add').post(function (req, res) {
 
 // Defined get data(index or listing) route
 gameRoutes.route('/').get(function (req, res) {
-  // res.send('You requested to see all coins');
+  // res.send('You requested to see all gameresults');
 
-  Gameresults.find(function (err, coins){
+  Gameresults.find(function (err, gameresults){
     if(err){
       console.log(err);
     }
     else {
-      res.json(coins);
+      res.json(gameresults);
     }
+  });
+});
+
+// Get Game Id
+gameRoutes.route('/:id').get(function (req, res) {
+  var id = req.params.id;
+  // res.send('You requested to edit coin with id of ' + req.params.id);
+
+  Gameresults.findById(id, function (err, game){
+      res.json(game);
   });
 });
 
 // Defined edit route
 gameRoutes.route('/edit/:id').get(function (req, res) {
   var id = req.params.id;
-  res.send('You requested to edit coin with id of ' + req.params.id);
+  res.send('You requested to edit game with id of ' + req.params.id);
 
-  Gameresults.findById(id, function (err, coin){
-      res.json(coin);
+  Gameresults.findById(id, function (err, game){
+      res.json(game);
   });
 });
 
@@ -69,7 +79,7 @@ gameRoutes.route('/update/:id').post(function (req, res) {
 });
 
 // Defined delete | remove | destroy route
-gameRoutes.route('/delete/:id').get(function (req, res) {
+gameRoutes.route('/delete/:id').delete(function (req, res) {
     Gameresults.findByIdAndRemove({_id: req.params.id}, function(err, coin){
         if(err) res.json(err);
         else res.json('Successfully removed');
