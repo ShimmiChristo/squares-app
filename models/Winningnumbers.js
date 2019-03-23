@@ -2,16 +2,25 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
-var gameResultsSchema = new Schema({
-  id: Number, 
-  teamOne: Number, 
-  teamTwo: Number
+var winnersResultsSchema = new Schema({
+  game: {
+    type: Number
+  },
+  user: {
+    type: String
+  }, 
+  teamY: {
+    type: Number
+  },
+  teamX: {
+    type: Number
+  }
 }, {
-  collection: 'gameresults'
+  collection: 'winningnumbers'
 });
 
 // 'Coin' is the db collection and it's going to base it
 //  on the Coin Schema
 
-var Gameresults = mongoose.model('Gameresults', gameResultsSchema);
-module.exports = Gameresults;
+var Winningnumbers = mongoose.model('Winningnumbers', winnersResultsSchema);
+module.exports = Winningnumbers;

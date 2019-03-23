@@ -17,8 +17,8 @@ export class GameResultsComponent implements OnInit {
 
   ngOnInit() {
     this.getGames();
-    // this.getWinningNums();
-    // this.getSquares();
+    this.getWinningNums();
+    this.getSquares();
     // this.highlightWinners();
   }
 

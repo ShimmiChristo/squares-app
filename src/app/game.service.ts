@@ -19,8 +19,8 @@ const httpDelete = {
 export class GameService {
   // private gamesUrl = 'api/GAMERESULTSTABLE';  // URL to web api
   private gamesUrl = 'http://localhost:4000/api/games';
-  private squaresUrl = 'api/SQUARESTABLE';
-  private winningNumsUrl = 'api/WINNINGNUMS';
+  private squaresUrl = 'http://localhost:4000/api/squares';
+  private winningNumsUrl = 'http://localhost:4000/api/winners';
 
 
   constructor(

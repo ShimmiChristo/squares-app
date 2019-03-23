@@ -7,6 +7,8 @@ const express = require('express'),
     config = require('./config/DB');
     coinRoutes = require('./expressRoutes/coinRoutes');
     gameRoutes = require('./expressRoutes/gameRoutes');
+    squaresRoutes = require('./expressRoutes/squaresRoutes');
+    winnersRoutes = require('./expressRoutes/winnersRoutes');
 
 
     mongoose.Promise = global.Promise;
@@ -22,6 +24,8 @@ const express = require('express'),
 
     app.use('/api/coins', coinRoutes);
     app.use('/api/games', gameRoutes);
+    app.use('/api/squares', squaresRoutes);
+    app.use('/api/winners', winnersRoutes);
 
     const server = app.listen(port, function(){
         console.log('Listening on port ' + port);

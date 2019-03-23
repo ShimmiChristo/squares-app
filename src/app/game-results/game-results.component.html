@@ -6,8 +6,8 @@
     <input #teamTwo   />
   </label>
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(teamOne.value, teamTwo.value ); teamOne.value=''; teamTwo.value=''" >
-  <!-- <button (click)="add(teamOne.value, teamTwo.value ); teamOne.value=''; teamTwo.value=''"  (click)="winningNumsTable = []; getWinningNums(); "> -->
+  <!-- <button (click)="add(teamOne.value, teamTwo.value ); teamOne.value=''; teamTwo.value=''" > -->
+  <button (click)="add(teamOne.value, teamTwo.value ); teamOne.value=''; teamTwo.value=''"  (click)="winningNumsTable = []; getWinningNums(); ">
     add
   </button>
 </div>
