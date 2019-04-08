@@ -25,18 +25,28 @@
       <td>{{game.teamTwo}}</td>
       <td><button class="delete" title="delete game" routerLink="/delete/{{game._id}}" (click)="delete(game)" >x</button></td>
     </tr>
-    <tr class='game gameTwo' *ngFor="let winningNum of winningNumsTable" > {{winningNum.user}} </tr>
+    <!-- <tr class='game gameTwo' *ngFor="let winningNum of winningNumsTable" > {{winningNum.user}} </tr> -->
  
 </table>
-<!-- <div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
+<br>
+<br>
+<div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
     {{winningNum.user}}
-</div> -->
-
+</div>
+<br>
 <table>
         <tr id="squareResults">
             <th></th>
             <!-- <th [ngClass]="{ 'text-success': xTeamVal ? xTeamVal.toString().substr(-1) ===  gameTable[0].teamOne.toString().substr(-1) : 'fail' }" -->
-            <th *ngFor="let winner of squaresTable | slice:0:10">{{winner.teamX}}</th>
+            <th *ngFor="let winner of squaresTable | slice:0:10">
+                <div *ngIf="winner.teamX == editCell">
+                    <input tpye="text" [(ngModel)]="winner.teamX">
+                </div>
+                <div *ngIf="winner.teamX !== editCell" (click)="toggle(winner.teamX)">
+                    {{winner.teamX}}
+                    
+                </div>
+            </th>
         </tr>
         <tr class='square' >    
             <td class="bold" *ngFor="let square of squaresTable | slice:1:2"> {{square.teamY}} </td>

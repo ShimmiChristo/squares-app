@@ -12,6 +12,7 @@ export class GameResultsComponent implements OnInit {
   gameTable: Gameresults[];
   squaresTable: Squareresults[];
   winningNumsTable: Winningnumbers[];
+  editCell: any;
 
   constructor(private gameService: GameService) { }
 
@@ -21,6 +22,7 @@ export class GameResultsComponent implements OnInit {
     this.getSquares();
     // this.highlightWinners();
   }
+
 
   getGames(): void {
     this.gameService.getGames()
@@ -60,6 +62,12 @@ export class GameResultsComponent implements OnInit {
   getSquares(): void {
     this.gameService.getSquares()
       .subscribe(squaresTable => this.squaresTable = squaresTable)
+  }
+
+  toggle(winningNum): void {
+    this.editCell = winningNum;
+    this.gameService.getSquares()
+    .subscribe(squaresTable => this.squaresTable = squaresTable)
   }
 
   highlightWinners(): void {

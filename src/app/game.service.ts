@@ -28,9 +28,6 @@ export class GameService {
     private messageService: MessageService) { }
 
   getGames(): Observable<Gameresults[]> {
-    //TODO: send the messsage _after_ fetching the gameTable
-    // this.messageService.add("GameService: fetched gameTable");s
-    // return of (GAMERESULTSTABLE);
     return this.http.get<Gameresults[]>(this.gamesUrl)
         .pipe(
           tap(_=> this.log('fetched games')),
@@ -62,9 +59,6 @@ export class GameService {
   }
 
   getGame(id: string): Observable<Gameresults> {
-    //TODO: send the message _after_ fetching the game-result
-    // this.messageService.add(`GameService: fetched game id=${id}`);
-    // return of (GAMERESULTSTABLE.find(game => game.game === id));
     const url = `${this.gamesUrl}/${id}`;
     return this.http.get<Gameresults>(url)
       .pipe(
