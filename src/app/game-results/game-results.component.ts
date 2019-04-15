@@ -64,11 +64,24 @@ export class GameResultsComponent implements OnInit {
       .subscribe(squaresTable => this.squaresTable = squaresTable)
   }
 
-  toggle(winningNum): void {
-    this.editCell = winningNum;
-    this.gameService.getSquares()
-    .subscribe(squaresTable => this.squaresTable = squaresTable)
+  addSquare(user, teamY, teamX): void {
+    user = user.trim();
+    teamY = teamY.trim();
+    teamX = teamX.trim();
+    if (!teamY || !teamX) { return; }
+    this.gameService.addSquare({ user, teamY, teamX } as Squareresults)
+      .subscribe(square => {
+        this.squaresTable.push(square);
+        console.log(this.squaresTable);
+      });
   }
+
+
+  // toggle(winningNum): void {
+  //   this.editCell = winningNum;
+  //   this.gameService.getSquare()
+  //   .subscribe(squaresTable => this.squaresTable = squaresTable)
+  // }
 
   highlightWinners(): void {
     let games = this.gameService.getGames();
@@ -102,6 +115,7 @@ export class GameResultsComponent implements OnInit {
         console.log(this.gameTable);
       });
   }
+  
 
   delete(game: Gameresults): void {
     this.gameTable = this.gameTable.filter(h => h !== game);

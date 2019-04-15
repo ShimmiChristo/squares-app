@@ -1,0 +1,26 @@
+<button (click)="goBack()">GO BACK</button>
+<button (click)="save()">Save</button>
+<br>
+<br>
+<div *ngIf="square">
+    <div>
+      <label>Game ID: {{square._id}} <br>
+        <input [(ngModel)]="square._id" placeholder="name">
+      </label>
+      <br>
+      <br>
+      <label>Game User: {{square.user}} <br>
+        <input [(ngModel)]="square.user" placeholder="name">
+      </label>
+      <br>
+      <br>
+      <label>Square teamY: {{square.teamY}} <br>
+        <input [(ngModel)]="square.teamY" placeholder="name">
+      </label>
+      <br>
+      <br>
+      <label>Square teamX: {{square.teamX}} <br>
+        <input [(ngModel)]="square.teamX" placeholder="name">
+      </label>
+    </div>
+  </div>

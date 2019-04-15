@@ -60,15 +60,16 @@ squaresRoutes.route('/edit/:id').get(function (req, res) {
 });
 
 //  Defined update route
-squaresRoutes.route('/update/:id').post(function (req, res) {
-    Squareresults.findById(req.params.id, function(err, coin) {
-    if (!coin)
+squaresRoutes.route('/update/:id').put(function (req, res) {
+    Squareresults.findById(req.params.id, function(err, square) {
+    if (!square)
       return next(new Error('Could not load Document'));
     else {
-      coin.name = req.body.name;
-      coin.price = req.body.price;
+      square.user = req.body.user;
+      square.teamY = req.body.teamY;
+      square.teamX = req.body.teamX;
 
-      coin.save().then(coin => {
+      square.save().then(square => {
           res.json('Update complete');
       })
       .catch(err => {

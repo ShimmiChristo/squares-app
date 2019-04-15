@@ -24,7 +24,7 @@
       <td>{{game.teamOne}}</td>
       <td>{{game.teamTwo}}</td>
       <td><button class="delete" title="delete game" routerLink="/delete/{{game._id}}" (click)="delete(game)" >x</button></td>
-    </tr>
+  </tr>
     <!-- <tr class='game gameTwo' *ngFor="let winningNum of winningNumsTable" > {{winningNum.user}} </tr> -->
  
 </table>
@@ -33,27 +33,42 @@
 <div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
     {{winningNum.user}}
 </div>
+    <!-- <div>
+    <label>Square:
+       User <input #user   />
+       Team Y <input #teamY   />
+       Team X <input #teamX   />
+    </label>
+    <button (click)="addSquare(user.value, teamY.value, teamX.value ); teamOne.value=''; teamTwo.value=''" >
+        add
+    </button>
+</div> -->
+
+
 <br>
+<br>
+
+
+
 <table>
         <tr id="squareResults">
-            <th></th>
-            <!-- <th [ngClass]="{ 'text-success': xTeamVal ? xTeamVal.toString().substr(-1) ===  gameTable[0].teamOne.toString().substr(-1) : 'fail' }" -->
-            <th *ngFor="let winner of squaresTable | slice:0:10">
-                <div *ngIf="winner.teamX == editCell">
-                    <input tpye="text" [(ngModel)]="winner.teamX">
+            <th>  </th>
+            <th *ngFor="let square of squaresTable | slice:0:10">
+                <div *ngIf="square.teamX == editCell">
+                    <input type="text" [(ngModel)]="square.teamX">
                 </div>
-                <div *ngIf="winner.teamX !== editCell" (click)="toggle(winner.teamX)">
-                    {{winner.teamX}}
+                <div *ngIf="square.teamX !== editCell" routerLink="/square/{{square._id}}" (click)="toggle(square.teamX)">
+                    {{square.teamX}}
                     
                 </div>
             </th>
         </tr>
         <tr class='square' >    
-            <td class="bold" *ngFor="let square of squaresTable | slice:1:2"> {{square.teamY}} </td>
+            <td class="bold" *ngFor="let square of squaresTable | slice:0:1"> {{square.teamY}} </td>
             <td *ngFor="let square of squaresTable | slice:0:10;"   [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' :  square == false }" >{{square.user}}</td>
         </tr>
         <tr class='square' >    
-            <td class="bold" *ngFor="let square of squaresTable | slice:11:12"> {{square.teamY}} </td>
+            <td class="bold" *ngFor="let square of squaresTable | slice:10:11"> {{square.teamY}} </td>
             <td *ngFor="let square of squaresTable | slice:10:20;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' :  square == false }" >{{square.user}}</td>
         </tr>
         <tr class='square' >    
@@ -90,7 +105,7 @@
         </tr>
 
       </table>
-
+ 
 
 
 

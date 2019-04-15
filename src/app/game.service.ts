@@ -8,6 +8,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 // import { type } from 'os';
 
 const httpOptions = {
+  params: new HttpParams(  ),
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 const httpDelete = {
@@ -58,6 +59,24 @@ export class GameService {
       );
   }
 
+  getSquare(id: string): Observable<Squareresults> {
+    const url = `${this.squaresUrl}/${id}`;
+    return this.http.get<Squareresults>(url)
+    .pipe(
+      tap(_=> this.log(`fetched game id=${id}`)),
+      catchError(this.handleError<Squareresults>(`fetched game id=${id}`))
+    );
+  }
+
+  updateSquare(square: Squareresults): Observable<any> {
+    const url = `${this.squaresUrl}/update/${square._id}`;
+    return this.http.put(url, square, httpOptions)
+      .pipe(
+        tap(_=> this.log(`saved square id=${square._id}`)),
+        catchError(this.handleError<any>('updateSquare'))
+      );
+  }
+
   getGame(id: string): Observable<Gameresults> {
     const url = `${this.gamesUrl}/${id}`;
     return this.http.get<Gameresults>(url)
@@ -102,6 +121,15 @@ export class GameService {
       .pipe(
         tap((game: Winningnumbers) => this.log(`added game w/ id=${game.game}`)),
         catchError(this.handleError<Winningnumbers>('addGame'))
+      );
+  }
+
+  addSquare(square: Squareresults): Observable<Squareresults> {
+      const url = `${this.squaresUrl}/add/`;
+      return this.http.post<Squareresults>(url, square, httpOptions)
+      .pipe(
+        tap((Square: Squareresults) => this.log(`added Square w/ id=${Square._id}`)),
+        catchError(this.handleError<Squareresults>('addSquare'))
       );
   }
 
