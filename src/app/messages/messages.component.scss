@@ -1,0 +1,16 @@
+$red : #fe4a49;
+$blue: #2ab7ca;
+$yellow: #fed766;
+$gray: #e6e6ea;
+$light-gray: #f4f4f8;
+
+.messages {
+    width: 800px;
+    height: 200px;
+    color: $red;
+    border: 1px solid $yellow;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 50px 100px;
+    overflow: scroll;
+}

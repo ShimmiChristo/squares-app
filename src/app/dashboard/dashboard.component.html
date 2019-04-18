@@ -8,3 +8,65 @@
   </a>
 </div>
 
+<br>
+<br>
+
+
+
+<table>
+    <tr id="squareResults">
+        <th>  </th>
+        <th *ngFor="let square of squaresTable | slice:0:10">
+            <div *ngIf="square.teamX == editCell">
+                <input type="text" [(ngModel)]="square.teamX">
+            </div>
+            <div *ngIf="square.teamX !== editCell" routerLink="/square/{{square._id}}" (click)="toggle(square.teamX)">
+                {{square.teamX}}
+                
+            </div>
+        </th>
+    </tr>
+    <tr class='square' >    
+        <td class="bold" *ngFor="let square of squaresTable | slice:0:1"> {{square.teamY}} </td>
+        <td *ngFor="let square of squaresTable | slice:0:10;"   [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' :  square == false }" >{{square.user}}</td>
+    </tr>
+    <tr class='square' >    
+        <td class="bold" *ngFor="let square of squaresTable | slice:10:11"> {{square.teamY}} </td>
+        <td *ngFor="let square of squaresTable | slice:10:20;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' :  square == false }" >{{square.user}}</td>
+    </tr>
+    <tr class='square' >    
+        <td class="bold" *ngFor="let square of squaresTable | slice:21:22"> {{square.teamY}} </td>
+        <td *ngFor="let square of squaresTable | slice:20:30;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' :  square == false }" >{{square.user}}</td>
+    </tr>
+    <tr class='square' >    
+        <td class="bold" *ngFor="let square of squaresTable | slice:31:32"> {{square.teamY}} </td>
+        <td *ngFor="let square of squaresTable | slice:30:40;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' :  square == false }" >{{square.user}}</td>
+    </tr>
+    <tr class='square' >    
+        <td class="bold" *ngFor="let square of squaresTable | slice:41:42"> {{square.teamY}} </td>
+        <td *ngFor="let square of squaresTable | slice:40:50;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >{{square.user}}</td>
+    </tr>
+    <tr class='square' >    
+        <td class="bold" *ngFor="let square of squaresTable | slice:51:52"> {{square.teamY}} </td>
+        <td *ngFor="let square of squaresTable | slice:50:60;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >{{square.user}}</td>
+    </tr>
+    <tr class='square' >    
+        <td class="bold" *ngFor="let square of squaresTable | slice:61:62"> {{square.teamY}} </td>
+        <td *ngFor="let square of squaresTable | slice:60:70;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >{{square.user}}</td>
+    </tr>
+    <tr class='square' >    
+        <td class="bold" *ngFor="let square of squaresTable | slice:71:72"> {{square.teamY}} </td>
+        <td *ngFor="let square of squaresTable | slice:70:80;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >{{square.user}}</td>
+    </tr>
+    <tr class='square' >    
+        <td class="bold" *ngFor="let square of squaresTable | slice:81:82"> {{square.teamY}} </td>
+        <td *ngFor="let square of squaresTable | slice:80:90;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >{{square.user}}</td>
+    </tr>
+    <tr class='square' >    
+        <td class="bold" *ngFor="let square of squaresTable | slice:91:92"> {{square.teamY}} </td>
+        <td *ngFor="let square of squaresTable | slice:90:100;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >{{square.user}}</td>
+    </tr>
+
+  </table>
+
+

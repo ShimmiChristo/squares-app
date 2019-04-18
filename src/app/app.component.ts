@@ -8,7 +8,7 @@ import { GameService } from './game.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'My First Angular App!';
+  title = 'The Squares Game App';
   squaresTable: Squareresults[] = [];
   winningNumsTable: Winningnumbers[] = [];
 

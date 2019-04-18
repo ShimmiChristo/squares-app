@@ -1,17 +1,23 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <nav>
-    <a routerLink="/dashboard">Dashboard</a>
-    <a routerLink="/game-results">Game Results</a>
-  </nav>
-  <!-- <app-game-results></app-game-results> -->
+<div class="container">
+
+  <div style="text-align:center">
+      <h1>
+        Welcome to {{ title }}!
+      </h1>
+      <nav>
+        <a routerLink="/dashboard">Dashboard</a>
+        <a routerLink="/game-results">Games</a>
+        <a routerLink="/game-results">Squares</a>
+      </nav>
+      <!-- <app-game-results></app-game-results> -->
+    </div>
+    
+    
+    <router-outlet></router-outlet>
+    
+    <br>
+    <app-messages></app-messages>
+
+    
 </div>
-
-
-<router-outlet></router-outlet>
-
-<br>
-<app-messages></app-messages>
