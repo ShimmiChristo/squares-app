@@ -7,7 +7,7 @@ var gameRoutes = express.Router();
 // Require Item model in our routes module
 var Gameresults = require('../models/Gameresults');
 
-var gameTwo = new Gameresults({game: 1, teamOne: 100, teamTwo: 99});
+// var gameTwo = new Gameresults({game: 1, teamOne: 100, teamTwo: 99});
 // gameTwo.save(function (err) {
 //   if (err) { return handleError(err) }
 //   else { console.log('Gameresults was saved!'); }

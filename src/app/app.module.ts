@@ -10,6 +10,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component'; // <-- NgModel lives here
 import { HttpClientModule }    from '@angular/common/http';
 import { SquareDetailComponent } from './square-detail/square-detail.component';
+import { WinnersComponent } from './winners/winners.component';
 
 // import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { InMemoryDataService }  from './in-memory-data.service';
@@ -22,7 +23,8 @@ import { SquareDetailComponent } from './square-detail/square-detail.component';
     GameDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    SquareDetailComponent
+    SquareDetailComponent,
+    WinnersComponent
   ],
   imports: [
     BrowserModule,

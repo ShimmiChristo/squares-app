@@ -4,10 +4,9 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     cors = require('cors'),
     mongoose = require('mongoose'),
-    config = require('./config/db');
-    coinRoutes = require('./expressRoutes/coinRoutes');
-    gameRoutes = require('./expressRoutes/gameRoutes');
-    squaresRoutes = require('./expressRoutes/squaresRoutes');
+    config = require('./config/db'),
+    gameRoutes = require('./expressRoutes/gameRoutes'),
+    squaresRoutes = require('./expressRoutes/squaresRoutes'),
     winnersRoutes = require('./expressRoutes/winnersRoutes');
 
 
@@ -22,7 +21,6 @@ const express = require('express'),
     app.use(cors());
     const port = process.env.PORT || 4000;
 
-    app.use('/api/coins', coinRoutes);
     app.use('/api/games', gameRoutes);
     app.use('/api/squares', squaresRoutes);
     app.use('/api/winners', winnersRoutes);

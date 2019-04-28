@@ -1,13 +1,10 @@
-<button (click)="goBack()">GO BACK</button>
-<button (click)="save()">Save</button>
 <br>
-<br>
+
 <div *ngIf="square">
     <div>
       <label>Game ID: {{square._id}} <br>
-        <input [(ngModel)]="square._id" placeholder="name">
+        <!-- <input [(ngModel)]="square._id" placeholder="name"> -->
       </label>
-      <br>
       <br>
       <label>Game User: {{square.user}} <br>
         <input [(ngModel)]="square.user" placeholder="name">
@@ -24,3 +21,8 @@
       </label>
     </div>
   </div>
+
+<br>
+<br>
+<button class="secondary gray" (click)="goBack()">GO BACK</button>
+<button class="primary blue" (click)="save()">Save</button>

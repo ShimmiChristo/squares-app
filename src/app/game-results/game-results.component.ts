@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Gameresults, Squareresults, Winningnumbers } from '../game-results';
-// import { GAMERESULTSTABLE } from '../mock-game-results';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { GameService } from '../game.service';
 
 @Component({
@@ -14,9 +15,13 @@ export class GameResultsComponent implements OnInit {
   winningNumsTable: Winningnumbers[];
   editCell: any;
 
-  constructor(private gameService: GameService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private gameService: GameService,
+    private location: Location
+  ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getGames();
     this.getWinningNums();
     this.getSquares();

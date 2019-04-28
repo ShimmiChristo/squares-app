@@ -6,11 +6,20 @@ var gameResultsSchema = new Schema({
   game: {
     type: Number
   },
-  teamOne: {
-    type: Number
+  date: {
+    type: String
+  },
+  winner: {
+    type: String
   }, 
-  teamTwo: {
-    type: Number
+  winningScore: {
+    type: String
+  },
+  loser: {
+    type: String
+  }, 
+  losingScore: {
+    type: String
   }
 }, {
   collection: 'gameresults'
