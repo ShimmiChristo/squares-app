@@ -3,6 +3,11 @@ export class Gameresults {
     game: number;
     teamOne: number;
     teamTwo: number;
+    round: string;
+    winner: string;
+    winningScore: string;
+    loser: string;
+    losingScore: string;
 }
 
 export class Squareresults {

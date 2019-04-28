@@ -6,6 +6,7 @@ const express = require('express'),
     mongoose = require('mongoose'),
     config = require('./config/db'),
     gameRoutes = require('./expressRoutes/gameRoutes'),
+    ncaaGameRoutes = require('./expressRoutes/ncaaGameRoutes'),
     squaresRoutes = require('./expressRoutes/squaresRoutes'),
     winnersRoutes = require('./expressRoutes/winnersRoutes');
 
@@ -22,6 +23,7 @@ const express = require('express'),
     const port = process.env.PORT || 4000;
 
     app.use('/api/games', gameRoutes);
+    app.use('/api/ncaa', ncaaGameRoutes);
     app.use('/api/squares', squaresRoutes);
     app.use('/api/winners', winnersRoutes);
 
