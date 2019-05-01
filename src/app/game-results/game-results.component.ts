@@ -59,30 +59,30 @@ export class GameResultsComponent implements OnInit {
         // console.log(ncaaTable);
         // ncaaTable.map(function(gameArr, i){
         for (var i=0; i < ncaaTable.length; i++) {
-          console.log(ncaaTable[i]);
           for (var j=0; j < ncaaTable[i].length; j++) {
             console.log(ncaaTable[i][j]);
+            this.squaresTable.forEach(nums => {
+              if (ncaaTable[i][j].winningScore.toString().substr(-1) == nums.teamX.toString() && 
+              ncaaTable[i][j].losingScore.toString().substr(-1) == nums.teamY.toString() ) {
+                    this.gameService.getWinningNums()
+                    .subscribe(game => {
+                      // if (this.winningNumsTable.findIndex(x => x.id == nums.id) === -1){
+                        this.winningNumsTable.push(nums);
+                        // console.log(this.winningNumsTable);
+                      // }
+                      });
+                    }
+                })
+              }
+              // )
           }
 
         // }
             // this.gameArr.forEach((games, index) => {
             //   // console.log(games);
-            //   this.squaresTable.forEach(nums => {
-            //     if (games.winningScore.toString().substr(-1) == nums.teamX.toString() && 
-            //         games.losingScore.toString().substr(-1) == nums.teamY.toString() ) {
-            //           this.gameService.getWinningNums()
-            //           .subscribe(game => {
-            //             // if (this.winningNumsTable.findIndex(x => x.id == nums.id) === -1){
-            //               this.winningNumsTable.push(nums);
-            //               // console.log(this.winningNumsTable);
-            //             // }
-            //             });
-            //           }
-            //       })
-            //     })
 
           // })
-        }
+        // }
         })
     }
 
