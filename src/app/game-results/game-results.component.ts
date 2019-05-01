@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Gameresults, Squareresults, Winningnumbers } from '../game-results';
+import { Gameresults, Squareresults, Winningnumbers, Ncaaresults } from '../game-results';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { GameService } from '../game.service';
@@ -11,6 +11,7 @@ import { GameService } from '../game.service';
 })
 export class GameResultsComponent implements OnInit {
   gameTable: Gameresults[];
+  ncaaTable: Ncaaresults[];
   squaresTable: Squareresults[];
   winningNumsTable: Winningnumbers[];
   editCell: any;
@@ -22,12 +23,20 @@ export class GameResultsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getNCAA();
     this.getGames();
     this.getWinningNums();
     this.getSquares();
     // this.highlightWinners();
   }
 
+
+  getNCAA(): void {
+    this.gameService.getNCAA()
+        .subscribe(
+            ncaaTable => this.ncaaTable = ncaaTable)
+            // console.log(this.ncaaTable)
+  }
 
   getGames(): void {
     this.gameService.getGames()
@@ -45,23 +54,36 @@ export class GameResultsComponent implements OnInit {
     this.gameService.getSquares()
       .subscribe(squaresTable => this.squaresTable = squaresTable);
       
-    this.gameService.getGames()
-      .subscribe(gameTable => { this.gameTable = gameTable;
-        this.gameTable.forEach(games => {
-          this.squaresTable.forEach(nums => {
-            if (games.teamOne.toString().substr(-1) == nums.teamX.toString() && 
-                games.teamTwo.toString().substr(-1) == nums.teamY.toString() ) {
-                  this.gameService.getWinningNums()
-                  .subscribe(game => {
-                    // if (this.winningNumsTable.findIndex(x => x.id == nums.id) === -1){
-                      this.winningNumsTable.push(nums);
-                      // console.log(this.winningNumsTable);
-                    // }
-                    });
-                  }
-              })
-            })
-          })
+    this.gameService.getNCAA()
+      .subscribe(ncaaTable => { this.ncaaTable = ncaaTable;
+        // console.log(ncaaTable);
+        // ncaaTable.map(function(gameArr, i){
+        for (var i=0; i < ncaaTable.length; i++) {
+          console.log(ncaaTable[i]);
+          for (var j=0; j < ncaaTable[i].length; j++) {
+            console.log(ncaaTable[i][j]);
+          }
+
+        // }
+            // this.gameArr.forEach((games, index) => {
+            //   // console.log(games);
+            //   this.squaresTable.forEach(nums => {
+            //     if (games.winningScore.toString().substr(-1) == nums.teamX.toString() && 
+            //         games.losingScore.toString().substr(-1) == nums.teamY.toString() ) {
+            //           this.gameService.getWinningNums()
+            //           .subscribe(game => {
+            //             // if (this.winningNumsTable.findIndex(x => x.id == nums.id) === -1){
+            //               this.winningNumsTable.push(nums);
+            //               // console.log(this.winningNumsTable);
+            //             // }
+            //             });
+            //           }
+            //       })
+            //     })
+
+          // })
+        }
+        })
     }
 
   getSquares(): void {

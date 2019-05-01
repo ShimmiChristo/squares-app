@@ -3,7 +3,11 @@ export class Gameresults {
     game: number;
     teamOne: number;
     teamTwo: number;
+}
+
+export class Ncaaresults {
     round: string;
+    date: string;
     winner: string;
     winningScore: string;
     loser: string;

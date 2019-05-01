@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Gameresults, Squareresults, Winningnumbers } from './game-results';
+import { Gameresults, Squareresults, Winningnumbers, Ncaaresults } from './game-results';
 // import { GAMERESULTSTABLE } from './mock-game-results';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
@@ -19,6 +19,7 @@ const httpDelete = {
 @Injectable({ providedIn: 'root' })
 export class GameService {
   // private gamesUrl = 'api/GAMERESULTSTABLE';  // URL to web api
+  private ncaaURL = 'http://localhost:4000/api/ncaa';
   private gamesUrl = 'http://localhost:4000/api/games';
   private squaresUrl = 'http://localhost:4000/api/squares';
   private winningNumsUrl = 'http://localhost:4000/api/winners';
@@ -28,6 +29,13 @@ export class GameService {
     private http: HttpClient,
     private messageService: MessageService) { }
 
+  getNCAA(): Observable<Ncaaresults[]> {
+    return this.http.get<Ncaaresults[]>(this.ncaaURL)
+        .pipe(
+          tap(_=> this.log('fetched NCAA Games')),
+          catchError(this.handleError('getNCAA', []))
+        );
+  }
   getGames(): Observable<Gameresults[]> {
     return this.http.get<Gameresults[]>(this.gamesUrl)
         .pipe(
@@ -145,17 +153,17 @@ export class GameService {
  * @param operation - name of the operation that failed
  * @param result - optional value to return as the observable result
  */
-private handleError<T> (operation = 'operation', result?: T) {
-  return (error: any): Observable<T> => {
- 
-    // TODO: send the error to remote logging infrastructure
-    console.error(error); // log to console instead
- 
-    // TODO: better job of transforming error for user consumption
-    this.log(`${operation} failed: ${error.message}`);
- 
-    // Let the app keep running by returning an empty result.
-    return of(result as T);
-  };
-}
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+  
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+  
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
+  
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
 }

@@ -13,6 +13,12 @@
 </div>
 <br>
 <br>
+<div class='ncaa-score' *ngFor="let ncaa of ncaaTable; let i = index" >
+  <div class='ncaa-score' *ngFor="let game of ncaa; let j = index" >
+
+  {{game.winner}}  {{game.winningScore}} ---  {{game.loser}}  {{game.losingScore}}
+  </div>
+</div>
 <br>
 
 <table>
@@ -50,6 +56,8 @@
 
 <br>
 <br>
+
+
 
 
 <!-- <app-game-detail [game]="selectedGame"></app-game-detail> -->

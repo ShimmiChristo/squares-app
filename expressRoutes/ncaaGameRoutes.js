@@ -140,13 +140,6 @@ router.route('/').get(function (req, res) {
         res.json(parsedHTML);
 
     });
-    // round1Games.find(function(err,round1results){
-    //     if(err){
-    //         console.log(err);
-    //     }
-    //     else {
-    //     }
-    // })
 
 });
 
