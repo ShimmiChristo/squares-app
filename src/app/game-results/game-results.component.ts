@@ -55,7 +55,7 @@ export class GameResultsComponent implements OnInit {
       .subscribe(squaresTable => this.squaresTable = squaresTable);
       
     this.gameService.getNCAA()
-      .subscribe(ncaaTable => { this.ncaaTable = ncaaTable;
+      .subscribe((ncaaTable : any[]) => { this.ncaaTable = ncaaTable;
         // console.log(ncaaTable);
         // ncaaTable.map(function(gameArr, i){
         for (var i=0; i < ncaaTable.length; i++) {

@@ -13,8 +13,8 @@ import { GameService } from '../game.service';
 export class WinnersComponent implements OnInit {
   gameTable: Gameresults[];
   squaresTable: Squareresults[];
-  winningNumsTable: Winningnumbers[];
-  ncaaTable: Ncaaresults[];
+  winningNumsTable: any[];
+  ncaaTable: any[];
   editCell: any;
 
   constructor(
@@ -35,46 +35,37 @@ export class WinnersComponent implements OnInit {
   }
 
   getWinningNums(): void {
-    // this.gameService.getWinningNums()
-      // .subscribe(winningNumsTable => this.winningNumsTable = winningNumsTable);
-    // teamOne = teamOne.trim();
-    // teamTwo = teamTwo.trim();
-    // if (!teamOne || !teamTwo) { return; }
     this.winningNumsTable = [];
 
     this.gameService.getSquares()
       .subscribe(squaresTable => this.squaresTable = squaresTable);
       
     this.gameService.getNCAA()
-      .subscribe(ncaaTable => { this.ncaaTable = ncaaTable;
+      .subscribe((ncaaTable : any[]) => { this.ncaaTable = ncaaTable;
         // console.log(ncaaTable);
         // ncaaTable.map(function(gameArr, i){
         for (var i=0; i < ncaaTable.length; i++) {
-          for (var j=0; j < ncaaTable[i].length; j++) {
-            // console.log(ncaaTable[i][j]);
+          ncaaTable[i].forEach(games => {
             this.squaresTable.forEach(nums => {
-              if (ncaaTable[i][j].winningScore.toString().substr(-1) == nums.teamX.toString() && 
-              ncaaTable[i][j].losingScore.toString().substr(-1) == nums.teamY.toString() ) {
+              if (games.winningScore.toString().substr(-1) == nums.teamX.toString() && 
+              games.losingScore.toString().substr(-1) == nums.teamY.toString() ) {
                     this.gameService.getWinningNums()
-                    .subscribe(game => {
-                      // if (this.winningNumsTable.findIndex(x => x.id == nums.id) === -1){
+                    .subscribe((game : any[]) => {
                         this.winningNumsTable.push(
-                            nums  
+                          {
+                            'round': games.round,
+                            'user': nums.user, 
+                            'squareWinner': nums.teamX,
+                            'squareLoser': nums.teamY, 
+                            'winningScore': games.winningScore, 
+                            'losingScore': games.losingScore
+                          }
                         );
-                      // }
                       });
                     }
                 })
-              }
-              // )
+          })
           }
-
-        // }
-            // this.gameArr.forEach((games, index) => {
-            //   // console.log(games);
-
-          // })
-        // }
         })
     }
 
