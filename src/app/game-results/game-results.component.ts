@@ -60,7 +60,7 @@ export class GameResultsComponent implements OnInit {
         // ncaaTable.map(function(gameArr, i){
         for (var i=0; i < ncaaTable.length; i++) {
           for (var j=0; j < ncaaTable[i].length; j++) {
-            console.log(ncaaTable[i][j]);
+            // console.log(ncaaTable[i][j]);
             this.squaresTable.forEach(nums => {
               if (ncaaTable[i][j].winningScore.toString().substr(-1) == nums.teamX.toString() && 
               ncaaTable[i][j].losingScore.toString().substr(-1) == nums.teamY.toString() ) {

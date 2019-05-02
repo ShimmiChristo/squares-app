@@ -1,58 +1,71 @@
-<h2>Game Results</h2>
-<div>
-  <label>Game Score:
-    <!-- <input #gameName /> -->
-    <input #teamOne   />
-    <input #teamTwo   />
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <!-- <button (click)="add(teamOne.value, teamTwo.value ); teamOne.value=''; teamTwo.value=''" > -->
-  <button (click)="add(teamOne.value, teamTwo.value ); teamOne.value=''; teamTwo.value=''"  (click)="winningNumsTable = []; getWinningNums(); ">
-    add
-  </button>
-</div>
-<br>
-<br>
-<div class='ncaa-score' *ngFor="let ncaa of ncaaTable; let i = index" >
-  <div class='ncaa-score' *ngFor="let game of ncaa; let j = index" >
+<h1>Game Results</h1>
 
-  {{game.winner}}  {{game.winningScore}} ---  {{game.loser}}  {{game.losingScore}}
+<br>
+<br>
+<div class="column-container">
+  <div class="column">
+    <div class="title">Round 1</div>
+    <div class='ncaa-score' *ngFor="let ncaa of ncaaTable; let i = index" >
+      <div class='ncaa-score' *ngFor="let game of ncaa; let j = index" >
+          <div *ngIf="game.round == 'round-1'">
+            {{game.winner}}  {{game.winningScore}} ---  {{game.loser}}  {{game.losingScore}}
+    
+          </div>  
+    
+      </div>
+    </div>
+
   </div>
-</div>
-<br>
 
-<table>
-  <tr id='gameResults'>
-    <th>Game</th>
-    <th>Team X</th>
-    <th>Team Y</th>
-    <th>Remove</th>
-  </tr>
-  <tr class='game gameTwo' *ngFor="let game of gameTable; let i = index;" >
-      <td class='game gameTwo' routerLink="/detail/{{game._id}}">{{game._id}}</td>
-      <td>{{game.teamOne}}</td>
-      <td>{{game.teamTwo}}</td>
-      <td><button class="delete" title="delete game" routerLink="/delete/{{game._id}}" (click)="delete(game)" >x</button></td>
-  </tr>
-    <!-- <tr class='game gameTwo' *ngFor="let winningNum of winningNumsTable" > {{winningNum.user}} </tr> -->
- 
-</table>
-<br>
-<br>
-<div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
-    {{winningNum.user}}
-</div>
-    <!-- <div>
-    <label>Square:
-       User <input #user   />
-       Team Y <input #teamY   />
-       Team X <input #teamX   />
-    </label>
-    <button (click)="addSquare(user.value, teamY.value, teamX.value ); teamOne.value=''; teamTwo.value=''" >
-        add
-    </button>
-</div> -->
+  <div class="column">
+      <div class="title">Round 2</div>
+      <div class='ncaa-score' *ngFor="let ncaa of ncaaTable; let i = index" >
+        <div class='ncaa-score' *ngFor="let game of ncaa; let j = index" >
+            <div *ngIf="game.round == 'round-2'">
+              {{game.winner}}  {{game.winningScore}} ---  {{game.loser}}  {{game.losingScore}}
+      
+            </div>  
+      
+        </div>
+      </div>
+  
+    </div>
 
+    <div class="column">
+        <div class="title">Round 3</div>
+        <div class='ncaa-score' *ngFor="let ncaa of ncaaTable; let i = index" >
+          <div class='ncaa-score' *ngFor="let game of ncaa; let j = index" >
+              <div *ngIf="game.round == 'round-3'">
+                {{game.winner}}  {{game.winningScore}} ---  {{game.loser}}  {{game.losingScore}}
+              </div>  
+          </div>
+      </div>
+    
+      </div>
+
+      <div class="column">
+          <div class="title">Round 4</div>
+          <div class='ncaa-score' *ngFor="let ncaa of ncaaTable; let i = index" >
+            <div class='ncaa-score' *ngFor="let game of ncaa; let j = index" >
+                <div *ngIf="game.round == 'round-4'">
+                  {{game.winner}}  {{game.winningScore}} ---  {{game.loser}}  {{game.losingScore}}
+                </div>  
+            </div>
+          </div>
+      </div>
+
+      <div class="column">
+          <div class="title">Final Games</div>
+          <div class='ncaa-score' *ngFor="let ncaa of ncaaTable; let i = index" >
+            <div class='ncaa-score' *ngFor="let game of ncaa; let j = index" >
+                <div *ngIf="game.round == 'final-games'">
+                  {{game.winner}}  {{game.winningScore}} ---  {{game.loser}}  {{game.losingScore}}
+                </div>  
+            </div>
+          </div>
+      </div>
+
+</div>
 
 <br>
 <br>

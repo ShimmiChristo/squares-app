@@ -4,6 +4,33 @@
 <br>
 <br>
 
-    <div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
-        {{winningNum.user}}
+<div class="column-container">
+    <div class='column'>
+      <div class="title">Round 1 Winners</div>
+
+      <div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
+          <!-- <div *ngIf="winningNum.round == 'round-1'"> -->
+            {{winningNum.user}}
+          <!-- </div> -->
+      </div>
+
     </div>
+    <div class='column'>
+        <div class="title">Round 2 Winners</div>
+  
+        <div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
+            {{winningNum.user}}
+        </div>
+  
+    </div>
+    <div class='column'>
+        <div class="title">Round 3 Winners</div>
+  
+        <div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
+            {{winningNum.user}}
+        </div>
+  
+    </div>
+
+
+</div>

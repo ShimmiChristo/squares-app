@@ -20,6 +20,7 @@ export class Squareresults {
     user: string;
     teamY: number;
     teamX: number;
+    round: string;
 }
 
 export class Winningnumbers {
@@ -28,4 +29,5 @@ export class Winningnumbers {
     user: string;
     teamY: number;
     teamX: number;
+    round: string;
 }
