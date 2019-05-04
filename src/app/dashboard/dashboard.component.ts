@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Gameresults, Squareresults, Winningnumbers } from '../game-results';
 import { GameService } from '../game.service';
+import { compileNgModule } from '@angular/compiler';
 
 @Component({
   selector: 'app-dashboard',
@@ -31,15 +32,36 @@ export class DashboardComponent implements OnInit {
     this.gameService.getSquares()
       // .subscribe(squaresTable => this.squaresTable = squaresTable)
       .subscribe(squaresTable => { this.squaresTable = squaresTable
+        var winningRows = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
         this.squaresTable.forEach((square, i) => {
-          if(i == 0 || i == 10 || i == 20) {
-            console.log(square, i);
-            console.log(square.teamX);
-            square.teamX = 7;
-            console.log(square.teamX);
-            this.gameService.updateSquare(square)
-            .subscribe(squaresTable => this.squaresTable = squaresTable);
-          }
+            if(winningRows.includes(i)) {
+              for (var ten=0; ten < 10; ten++) {
+                if (squaresTable[i].teamY != square.teamY) {
+                  squaresTable[i].teamY = square.teamY
+                  this.gameService.updateSquare(squaresTable[i])
+                  .subscribe(squaresTable => this.squaresTable = squaresTable);
+                }
+                i++;
+              }
+            }
+          });
+        const winningCols = [0,1,2,3,4,5,6,7,8,9];
+        this.squaresTable.forEach((squareCol, j) => {
+
+            if(winningCols.includes(j)) {
+              for (var ten=0; ten < 100; ten += 10) {
+                // console.log(squaresTable[j]);
+                if (squaresTable[j].teamX != squareCol.teamX) {
+                  squaresTable[j].teamX = squareCol.teamX;
+                  this.gameService.updateSquare(squaresTable[j])
+                  .subscribe(squaresTable => this.squaresTable = squaresTable);
+                }
+                j += 10;
+              }
+            }
+          //   square.teamX = squaresTable[0].teamX;
+          //   this.gameService.updateSquare(square)
+          //   .subscribe(squaresTable => this.squaresTable = squaresTable);
 
         })
       })
