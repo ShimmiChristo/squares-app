@@ -11,6 +11,8 @@ import { GameService } from '../game.service';
 })
 export class SquareDetailComponent implements OnInit {
   square: Squareresults;
+  squaresTable: Squareresults[];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -20,12 +22,17 @@ export class SquareDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSquare();
+    this.getSquares();
   }
   getSquare(): void {
     // const id = +this.route.snapshot.paramMap.get('id'); //converts to number
     const id = this.route.snapshot.paramMap.get('id');
     this.gameService.getSquare(id)
         .subscribe(square => this.square = square);
+  }
+  getSquares(): void {
+    this.gameService.getSquares()
+      .subscribe(squaresTable => this.squaresTable = squaresTable)
   }
   goBack(): void {
     this.location.back();

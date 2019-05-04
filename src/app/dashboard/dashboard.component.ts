@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
   gameTable: Gameresults[];
   squaresTable: Squareresults[];
   winningNumsTable: Winningnumbers[];
+  // square: Squareresults;
   
   constructor(private gameService: GameService) { }
 
@@ -28,8 +29,21 @@ export class DashboardComponent implements OnInit {
 
   getSquares(): void {
     this.gameService.getSquares()
-      .subscribe(squaresTable => this.squaresTable = squaresTable)
-  }
+      // .subscribe(squaresTable => this.squaresTable = squaresTable)
+      .subscribe(squaresTable => { this.squaresTable = squaresTable
+        this.squaresTable.forEach((square, i) => {
+          if(i == 0 || i == 10 || i == 20) {
+            console.log(square, i);
+            console.log(square.teamX);
+            square.teamX = 7;
+            console.log(square.teamX);
+            this.gameService.updateSquare(square)
+            .subscribe(squaresTable => this.squaresTable = squaresTable);
+          }
+
+        })
+      })
+}
 
   getWinningNums(): void {
     // this.gameService.getWinningNums()

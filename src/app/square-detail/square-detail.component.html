@@ -1,28 +1,110 @@
 <br>
 
-<div *ngIf="square">
-    <div>
-      <label>Game ID: {{square._id}} <br>
-        <!-- <input [(ngModel)]="square._id" placeholder="name"> -->
-      </label>
-      <br>
-      <label>Game User: {{square.user}} <br>
-        <input [(ngModel)]="square.user" placeholder="name">
-      </label>
-      <br>
-      <br>
-      <label>Square teamY: {{square.teamY}} <br>
-        <input [(ngModel)]="square.teamY" placeholder="name">
-      </label>
-      <br>
-      <br>
-      <label>Square teamX: {{square.teamX}} <br>
-        <input [(ngModel)]="square.teamX" placeholder="name">
-      </label>
+<div *ngFor="let item of squaresTable; let i = index;"  [ngClass]="{'active': true}">
+    <div *ngIf ="item._id == square._id && i == 0" >
+        <div>
+            <label>Game ID: {{square._id}} <br>
+              <!-- <input [(ngModel)]="square._id" placeholder="name"> -->
+            </label>
+            <br>
+            <label>Game User: {{square.user}} <br>
+              <input [(ngModel)]="square.user" placeholder="name">
+            </label>
+            <br>
+            <br>
+            <label>Square teamY: {{square.teamY}} <br>
+              <input [(ngModel)]="square.teamY" placeholder="name" >
+            </label>
+            <br>
+            <br>
+            <label>Square teamX: {{square.teamX}} <br>
+              <input [(ngModel)]="square.teamX" placeholder="name">
+            </label>
+        </div>
+  
+    </div>
+    <div *ngIf ="item._id == square._id && i == 10" >
+        <div>
+            <label>Game ID: {{square._id}} <br>
+              <!-- <input [(ngModel)]="square._id" placeholder="name"> -->
+            </label>
+            <br>
+            <label>Game User: {{square.user}} <br>
+              <input [(ngModel)]="square.user" placeholder="name">
+            </label>
+            <br>
+            <br>
+            <label>Square teamY: {{square.teamY}} <br>
+              <input [(ngModel)]="square.teamY" placeholder="name" >
+            </label>
+            <br>
+            <br>
+            <label>Square teamX: {{square.teamX}} <br>
+              <input [(ngModel)]="square.teamX" placeholder="name" disabled>
+            </label>
+        </div>
+  
     </div>
   </div>
+  
+
+<div *ngFor="let item of squaresTable | slice:1:9"  [ngClass]="{'active': true}">
+  <div *ngIf ="item._id == square._id " >
+
+      <div>
+          <label>Game ID: {{square._id}} <br>
+            <!-- <input [(ngModel)]="square._id" placeholder="name"> -->
+          </label>
+          <br>
+          <label>Game User: {{square.user}} <br>
+            <input [(ngModel)]="square.user" placeholder="name" disabled>
+          </label>
+          <br>
+          <br>
+          <label>Square teamY: {{square.teamY}} <br>
+            <input [(ngModel)]="square.teamY" placeholder="name" disabled>
+          </label>
+          <br>
+          <br>
+          <label>Square teamX: {{square.teamX}} <br>
+            <input [(ngModel)]="square.teamX" placeholder="name">
+          </label>
+      </div>
+
+  </div>
+</div>
 
 <br>
 <br>
+
+
+
+<div *ngFor="let item of squaresTable | slice:0:100"  [ngClass]="{'active': true}">
+    <div *ngIf ="item._id == square._id " >
+  
+        <div>
+            <label>Game ID: {{square._id}} <br>
+              <!-- <input [(ngModel)]="square._id" placeholder="name"> -->
+            </label>
+            <br>
+            <label>Game User: {{square.user}} <br>
+              <input [(ngModel)]="square.user" placeholder="name">
+            </label>
+            <br>
+            <br>
+            <label>Square teamY: {{square.teamY}} <br>
+              <input [(ngModel)]="square.teamY" placeholder="name" >
+            </label>
+            <br>
+            <br>
+            <label>Square teamX: {{square.teamX}} <br>
+              <input [(ngModel)]="square.teamX" placeholder="name" >
+            </label>
+        </div>
+  
+    </div>
+  </div>
+
+  
 <button class="secondary gray" (click)="goBack()">GO BACK</button>
 <button class="primary blue" (click)="save()">Save</button>
