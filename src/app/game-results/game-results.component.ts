@@ -11,9 +11,9 @@ import { GameService } from '../game.service';
 })
 export class GameResultsComponent implements OnInit {
   gameTable: Gameresults[];
-  ncaaTable: Ncaaresults[];
   squaresTable: Squareresults[];
-  winningNumsTable: Winningnumbers[];
+  winningNumsTable: any[];
+  ncaaTable: any[];
   editCell: any;
 
   constructor(
@@ -44,11 +44,6 @@ export class GameResultsComponent implements OnInit {
   }
 
   getWinningNums(): void {
-    // this.gameService.getWinningNums()
-      // .subscribe(winningNumsTable => this.winningNumsTable = winningNumsTable);
-    // teamOne = teamOne.trim();
-    // teamTwo = teamTwo.trim();
-    // if (!teamOne || !teamTwo) { return; }
     this.winningNumsTable = [];
 
     this.gameService.getSquares()
@@ -56,33 +51,74 @@ export class GameResultsComponent implements OnInit {
       
     this.gameService.getNCAA()
       .subscribe((ncaaTable : any[]) => { this.ncaaTable = ncaaTable;
-        // console.log(ncaaTable);
-        // ncaaTable.map(function(gameArr, i){
         for (var i=0; i < ncaaTable.length; i++) {
-          for (var j=0; j < ncaaTable[i].length; j++) {
-            // console.log(ncaaTable[i][j]);
+          ncaaTable[i].forEach(games => {
             this.squaresTable.forEach(nums => {
-              if (ncaaTable[i][j].winningScore.toString().substr(-1) == nums.teamX.toString() && 
-              ncaaTable[i][j].losingScore.toString().substr(-1) == nums.teamY.toString() ) {
+              // if the last digit of the winning score matches the column number and the last digit of the losing score matches the row number
+              if (games.winningScore.toString().substr(-1) == nums.teamX.toString() && 
+                  games.losingScore.toString().substr(-1) == nums.teamY.toString() ) {
                     this.gameService.getWinningNums()
-                    .subscribe(game => {
-                      // if (this.winningNumsTable.findIndex(x => x.id == nums.id) === -1){
-                        this.winningNumsTable.push(nums);
-                        // console.log(this.winningNumsTable);
-                      // }
-                      });
+                    //hard coding in each round of money. Need to create admin area to determine money values. 
+                    if(games.round == 'round-1') {
+                      this.winningNumsTable.push({
+                          'round': games.round,
+                          'money': 5,
+                          'user': nums.user, 
+                          'squareWinner': nums.teamX,
+                          'squareLoser': nums.teamY, 
+                          'winningScore': games.winningScore, 
+                          'losingScore': games.losingScore
+                        });
                     }
-                })
-              }
-              // )
-          }
+                    if(games.round == 'round-2') {
+                      this.winningNumsTable.push({
+                          'round': games.round,
+                          'money': 10,
+                          'user': nums.user, 
+                          'squareWinner': nums.teamX,
+                          'squareLoser': nums.teamY, 
+                          'winningScore': games.winningScore, 
+                          'losingScore': games.losingScore
+                        });
+                    }
+                    if(games.round == 'round-3') {
+                      this.winningNumsTable.push({
+                          'round': games.round,
+                          'money': 20,
+                          'user': nums.user, 
+                          'squareWinner': nums.teamX,
+                          'squareLoser': nums.teamY, 
+                          'winningScore': games.winningScore, 
+                          'losingScore': games.losingScore
+                        });
+                    }
+                    if(games.round == 'round-4') {
+                      this.winningNumsTable.push({
+                          'round': games.round,
+                          'money': 40,
+                          'user': nums.user, 
+                          'squareWinner': nums.teamX,
+                          'squareLoser': nums.teamY, 
+                          'winningScore': games.winningScore, 
+                          'losingScore': games.losingScore
+                        });
+                    }
+                    if(games.round == 'final-games') {
+                      this.winningNumsTable.push({
+                          'round': games.round,
+                          'money': 80,
+                          'user': nums.user, 
+                          'squareWinner': nums.teamX,
+                          'squareLoser': nums.teamY, 
+                          'winningScore': games.winningScore, 
+                          'losingScore': games.losingScore
+                        });
+                    }
 
-        // }
-            // this.gameArr.forEach((games, index) => {
-            //   // console.log(games);
-
-          // })
-        // }
+                    }
+                 })
+              })
+            }
         })
     }
 
