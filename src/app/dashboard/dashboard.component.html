@@ -30,14 +30,14 @@
         </th>
     </tr>
     <tr class='square' >    
-        <td class="bold" *ngFor="let square of squaresTable | slice:0:1"> 
+        <th class="bold" *ngFor="let square of squaresTable | slice:0:1"> 
             <div *ngIf="square.teamX == editCell">
                 <input type="text" [(ngModel)]="square.teamX">
             </div>
             <div *ngIf="square.teamX !== editCell" routerLink="/square/{{square._id}}" (click)="toggle(square.teamX)">
                 {{square.teamY}} 
             </div>
-        </td>
+        </th>
         <td *ngFor="let square of squaresTable | slice:0:10;"   [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' :  square == false }" >
             <div *ngIf="square.teamX == editCell">
                 <input type="text" [(ngModel)]="square.teamX">
@@ -48,14 +48,14 @@
         </td>
     </tr>
     <tr class='square' >    
-        <td class="bold" *ngFor="let square of squaresTable | slice:10:11"> 
+        <th class="bold" *ngFor="let square of squaresTable | slice:10:11"> 
             <div *ngIf="square.teamX == editCell">
                 <input type="text" [(ngModel)]="square.teamX">
             </div>
             <div *ngIf="square.teamX !== editCell" routerLink="/square/{{square._id}}" (click)="toggle(square.teamX)">
                 {{square.teamY}} 
             </div>
-        </td>
+        </th>
         <td *ngFor="let square of squaresTable | slice:10:20;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' :  square == false }" >
         
           <div *ngIf="square.teamX == editCell">
@@ -68,14 +68,14 @@
         </td>
     </tr>
     <tr class='square' >    
-        <td class="bold" *ngFor="let square of squaresTable | slice:20:21"> 
+        <th class="bold" *ngFor="let square of squaresTable | slice:20:21"> 
                 <div *ngIf="square.teamX == editCell">
                     <input type="text" [(ngModel)]="square.teamX">
                 </div>
                 <div *ngIf="square.teamX !== editCell" routerLink="/square/{{square._id}}" (click)="toggle(square.teamX)">
                     {{square.teamY}} 
                 </div>
-            </td>
+            </th>
         <td *ngFor="let square of squaresTable | slice:20:30;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' :  square == false }" >
         
           <div *ngIf="square.teamX == editCell">
@@ -88,14 +88,14 @@
         </td>
     </tr>
     <tr class='square' >    
-        <td class="bold" *ngFor="let square of squaresTable | slice:30:31"> 
+        <th class="bold" *ngFor="let square of squaresTable | slice:30:31"> 
             <div *ngIf="square.teamX == editCell">
                 <input type="text" [(ngModel)]="square.teamX">
             </div>
             <div *ngIf="square.teamX !== editCell" routerLink="/square/{{square._id}}" (click)="toggle(square.teamX)">
                 {{square.teamY}} 
             </div>
-        </td>
+        </th>
         <td *ngFor="let square of squaresTable | slice:30:40;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' :  square == false }" >
         
           <div *ngIf="square.teamX == editCell">
@@ -108,14 +108,14 @@
         </td>
     </tr>
     <tr class='square' >    
-        <td class="bold" *ngFor="let square of squaresTable | slice:40:41"> 
+        <th class="bold" *ngFor="let square of squaresTable | slice:40:41"> 
             <div *ngIf="square.teamX == editCell">
                 <input type="text" [(ngModel)]="square.teamX">
             </div>
             <div *ngIf="square.teamX !== editCell" routerLink="/square/{{square._id}}" (click)="toggle(square.teamX)">
                 {{square.teamY}} 
             </div>
-        </td>
+        </th>
         <td *ngFor="let square of squaresTable | slice:40:50;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >
         
           <div *ngIf="square.teamX == editCell">
@@ -128,14 +128,14 @@
         </td>
     </tr>
     <tr class='square' >    
-        <td class="bold" *ngFor="let square of squaresTable | slice:50:51"> 
+        <th class="bold" *ngFor="let square of squaresTable | slice:50:51"> 
             <div *ngIf="square.teamX == editCell">
                 <input type="text" [(ngModel)]="square.teamX">
             </div>
             <div *ngIf="square.teamX !== editCell" routerLink="/square/{{square._id}}" (click)="toggle(square.teamX)">
                 {{square.teamY}} 
             </div>
-        </td>
+        </th>
         <td *ngFor="let square of squaresTable | slice:50:60;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >
         
           <div *ngIf="square.teamX == editCell">
@@ -148,14 +148,14 @@
         </td>
     </tr>
     <tr class='square' >    
-        <td class="bold" *ngFor="let square of squaresTable | slice:60:61"> 
+        <th class="bold" *ngFor="let square of squaresTable | slice:60:61"> 
                 <div *ngIf="square.teamX == editCell">
                     <input type="text" [(ngModel)]="square.teamX">
                 </div>
                 <div *ngIf="square.teamX !== editCell" routerLink="/square/{{square._id}}" (click)="toggle(square.teamX)">
                     {{square.teamY}} 
                 </div>
-        </td>
+        </th>
         <td *ngFor="let square of squaresTable | slice:60:70;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >
         
           <div *ngIf="square.teamX == editCell">
@@ -168,14 +168,14 @@
         </td>
     </tr>
     <tr class='square' >    
-        <td class="bold" *ngFor="let square of squaresTable | slice:70:71"> 
+        <th class="bold" *ngFor="let square of squaresTable | slice:70:71"> 
             <div *ngIf="square.teamX == editCell">
                 <input type="text" [(ngModel)]="square.teamX">
             </div>
             <div *ngIf="square.teamX !== editCell" routerLink="/square/{{square._id}}" (click)="toggle(square.teamX)">
                 {{square.teamY}} 
             </div>
-        </td>
+        </th>
         <td *ngFor="let square of squaresTable | slice:70:80;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >
         
           <div *ngIf="square.teamX == editCell">
@@ -188,14 +188,14 @@
         </td>
     </tr>
     <tr class='square' >    
-        <td class="bold" *ngFor="let square of squaresTable | slice:80:81"> 
+        <th class="bold" *ngFor="let square of squaresTable | slice:80:81"> 
             <div *ngIf="square.teamX == editCell">
                 <input type="text" [(ngModel)]="square.teamX">
             </div>
             <div *ngIf="square.teamX !== editCell" routerLink="/square/{{square._id}}" (click)="toggle(square.teamX)">
                 {{square.teamY}} 
             </div>
-        </td>
+        </th>
         <td *ngFor="let square of squaresTable | slice:80:90;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >
         
           <div *ngIf="square.teamX == editCell">
@@ -208,14 +208,14 @@
         </td>
     </tr>
     <tr class='square' >    
-        <td class="bold" *ngFor="let square of squaresTable | slice:90:91"> 
+        <th class="bold" *ngFor="let square of squaresTable | slice:90:91"> 
             <div *ngIf="square.teamX == editCell">
                 <input type="text" [(ngModel)]="square.teamX">
             </div>
             <div *ngIf="square.teamX !== editCell" routerLink="/square/{{square._id}}" (click)="toggle(square.teamX)">
                 {{square.teamY}} 
             </div>
-        </td>
+        </th>
         <td *ngFor="let square of squaresTable | slice:90:100;"  [ngClass]="{ 'text-success': winningNumsTable.indexOf(square) != -1, 'failure' : false }" >
         
           <div *ngIf="square.teamX == editCell">

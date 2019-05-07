@@ -28,6 +28,8 @@ function getParsedHTML() {
   const round3Games = [];
   const round4Games = [];
   const finalGames = [];
+  const champGame = [];
+
 
 const getRound1 = function() {
     return rp(url)
@@ -104,25 +106,48 @@ const getFinalRound = function() {
     return rp(url)
     .then(function(html) {
         const final = $('.center-final-games > .final', html);
-        for (let i =0; i < final.length; i++) {
+        // for (let i =0; i < final.length; i++) {
             // var item = document.createElement('li');
             // item.appendChild(document.createTextNode(final[i]));
             // finalList.appendChild(item);
             
             finalGames.push({
                 'round': 'final-games',
-                'date': $(final[i]).find('.pod-status').children('span:first-child').text(),
-                'winner': $(final[i]).find('.teams').children("div[class='team winner']").children('.name').text(),
-                'winningScore': $(final[i]).find('.teams').children("div[class='team winner']").children('.score').text(),
-                'loser': $(final[i]).find('.teams').children("div[class='team']").children('.name').text(),
-                'losingScore': $(final[i]).find('.teams').children("div[class='team']").children('.score').text()
+                'date': $(final[0]).find('.pod-status').children('span:first-child').text(),
+                'winner': $(final[0]).find('.teams').children("div[class='team winner']").children('.name').text(),
+                'winningScore': $(final[0]).find('.teams').children("div[class='team winner']").children('.score').text(),
+                'loser': $(final[0]).find('.teams').children("div[class='team']").children('.name').text(),
+                'losingScore': $(final[0]).find('.teams').children("div[class='team']").children('.score').text()
             })
-        }
+            finalGames.push({
+                'round': 'final-games',
+                'date': $(final[2]).find('.pod-status').children('span:first-child').text(),
+                'winner': $(final[2]).find('.teams').children("div[class='team winner']").children('.name').text(),
+                'winningScore': $(final[2]).find('.teams').children("div[class='team winner']").children('.score').text(),
+                'loser': $(final[2]).find('.teams').children("div[class='team']").children('.name').text(),
+                'losingScore': $(final[2]).find('.teams').children("div[class='team']").children('.score').text()
+            })
+        // }
         return finalGames;
     })
 }
+const championship = function() {
+    return rp(url)
+    .then(function(html) {
+        const final = $('.center-final-games > .final', html);
+            champGame.push({
+                'round': 'champ-game',
+                'date': $(final[1]).find('.pod-status').children('span:first-child').text(),
+                'winner': $(final[1]).find('.teams').children("div[class='team winner']").children('.name').text(),
+                'winningScore': $(final[1]).find('.teams').children("div[class='team winner']").children('.score').text(),
+                'loser': $(final[1]).find('.teams').children("div[class='team']").children('.name').text(),
+                'losingScore': $(final[1]).find('.teams').children("div[class='team']").children('.score').text()
+            })
+        return champGame;
+    })
+}
 
-return Promise.all([getRound1(), getRound2(), getRound3(), getRound4(), getFinalRound()])
+return Promise.all([getRound1(), getRound2(), getRound3(), getRound4(), getFinalRound(), championship()])
     .then(result => {
         return result;
     })

@@ -58,6 +58,7 @@ export class GameResultsComponent implements OnInit {
               if (games.winningScore.toString().substr(-1) == nums.teamX.toString() && 
                   games.losingScore.toString().substr(-1) == nums.teamY.toString() ) {
                     this.gameService.getWinningNums()
+                    // console.log(ncaaTable[4][0]);
                     //hard coding in each round of money. Need to create admin area to determine money values. 
                     if(games.round == 'round-1') {
                       this.winningNumsTable.push({
@@ -114,11 +115,23 @@ export class GameResultsComponent implements OnInit {
                           'losingScore': games.losingScore
                         });
                     }
+                    if(games.round == 'champ-game') {
+                      this.winningNumsTable.push({
+                          'round': games.round,
+                          'money': 200,
+                          'user': nums.user, 
+                          'squareWinner': nums.teamX,
+                          'squareLoser': nums.teamY, 
+                          'winningScore': games.winningScore, 
+                          'losingScore': games.losingScore
+                        });
+                    }
 
                     }
                  })
               })
             }
+
         })
     }
 
