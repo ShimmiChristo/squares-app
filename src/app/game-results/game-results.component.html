@@ -15,10 +15,11 @@
           </div>  
       </div>
     </div>
+  </div>
 
   <br>
   <br>
-
+  <div class="column">
     <div class="title">Round 2</div>
     <div class='ncaa-score' *ngFor="let ncaa of ncaaTable; let i = index" >
       <div class='ncaa-score' *ngFor="let game of ncaa; let j = index" >
@@ -29,9 +30,11 @@
         </div>  
       </div>
     </div>
+  </div>
 
   <br>
   <br>
+  <div class="column">
 
     <div class="title">Round 3</div>
     <div class='ncaa-score' *ngFor="let ncaa of ncaaTable; let i = index" >
@@ -43,10 +46,11 @@
         </div>  
       </div>
   </div>
+</div>
 
   <br>
   <br>
-
+  <div class="column">
   <div class="title">Round 4</div>
   <div class='ncaa-score' *ngFor="let ncaa of ncaaTable; let i = index" >
     <div class='ncaa-score' *ngFor="let game of ncaa; let j = index" >
@@ -57,9 +61,11 @@
       </div>  
     </div>
   </div>
+</div>
 
   <br>
   <br>
+  <div class="column">
 
   <div class="title">Final Games</div>
   <div class='ncaa-score' *ngFor="let ncaa of ncaaTable; let i = index" >
@@ -71,10 +77,11 @@
       </div>  
     </div>
   </div>
+</div>
 
   <br>
   <br>
-
+<div class="column">
   <div class="title">Championship Game</div>
   <div class='ncaa-score' *ngFor="let ncaa of ncaaTable; let i = index" >
     <div class='ncaa-score' *ngFor="let game of ncaa; let j = index" >
@@ -89,165 +96,6 @@
 </div>
 
 
-
-<div class='column'>
-      <div class="title">Round 1 Winners</div>
-
-      <div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
-          <div *ngIf="winningNum.round == 'round-1'">
-            <div class="row">
-              <!-- Round: {{winningNum.round}} -->
-              <!-- <br> -->
-              Winning Name: {{winningNum.user}} 
-              <br>
-              Cash: ${{winningNum.money}}
-              <!-- <br> -->
-              <!-- Winner Square: {{winningNum.squareWinner}} -->
-              <!-- <br> -->
-              <!-- Loser Square: {{winningNum.squareLoser}} -->
-              <br>
-              Winning Team: {{winningNum.winningScore}}
-              <br>
-              Losing Team: {{winningNum.losingScore}}
-              <br><br>
-            </div>
-          </div>
-      </div>
-<br>
-<br>
-  <!-- </div> -->
-
-      <!-- <div class='column'> -->
-          <div class="title">Round 2 Winners</div>
-    
-          <div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
-              <div *ngIf="winningNum.round == 'round-2'">
-            <div class="row">
-                <!-- Round: {{winningNum.round}} -->
-                <!-- <br> -->
-                Winning Name: {{winningNum.user}} 
-                <br>
-                Cash: ${{winningNum.money}}
-                <!-- Winner Square: {{winningNum.squareWinner}} -->
-                <!-- <br> -->
-                <!-- Loser Square: {{winningNum.squareLoser}} -->
-                <br>
-                Winning Team: {{winningNum.winningScore}}
-                <br>
-                Losing Team: {{winningNum.losingScore}}
-                <br><br>
-              </div>
-            </div>
-          </div>
-    
-<br>
-<br>
-      <!-- <div class='column'> -->
-          <div class="title">Round 3 Winners</div>
-    
-          <div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
-              <div *ngIf="winningNum.round == 'round-3'">
-            <div class="row">
-                <!-- Round: {{winningNum.round}} -->
-                <!-- <br> -->
-                Winning Name: {{winningNum.user}} 
-                <!-- <br> -->
-                <!-- Winner Square: {{winningNum.squareWinner}} -->
-                <!-- <br> -->
-                <!-- Loser Square: {{winningNum.squareLoser}} -->
-                <br>
-                Winning Team: {{winningNum.winningScore}}
-                <br>
-                Losing Team: {{winningNum.losingScore}}
-                <br><br>
-              </div>
-            </div>
-          </div>
-    
-      <!-- </div> -->
-<br>
-<br>
-
-      <!-- <div class='column'> -->
-          <div class="title">Round 4 Winners</div>
-    
-          <div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
-              <div *ngIf="winningNum.round == 'round-4'">
-            <div class="row">
-                <!-- Round: {{winningNum.round}} -->
-                <!-- <br> -->
-                Winning Name: {{winningNum.user}} 
-                <!-- <br> -->
-                <!-- Winner Square: {{winningNum.squareWinner}} -->
-                <!-- <br> -->
-                <!-- Loser Square: {{winningNum.squareLoser}} -->
-                <br>
-                Winning Team: {{winningNum.winningScore}}
-                <br>
-                Losing Team: {{winningNum.losingScore}}
-                <br><br>
-              </div>
-          </div>
-        </div>
-    
-      <!-- </div> -->
-      <br>
-      <br>
-      
-      <!-- <div class='column'> -->
-          <div class="title">Final Games Winners</div>
-    
-          <div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
-              <div *ngIf="winningNum.round == 'final-games'">
-            <div class="row">
-                <!-- Round: {{winningNum.round}} -->
-                <!-- <br> -->
-                Winning Name: {{winningNum.user}} 
-                <!-- <br> -->
-                <!-- Winner Square: {{winningNum.squareWinner}} -->
-                <!-- <br> -->
-                <!-- Loser Square: {{winningNum.squareLoser}} -->
-                <br>
-                Winning Team: {{winningNum.winningScore}}
-                <br>
-                Losing Team: {{winningNum.losingScore}}
-                <br><br>
-              </div>
-            </div>
-          </div>
-    
-      <!-- </div> -->
-
-      <br>
-      <br>
-      
-      <!-- <div class='column'> -->
-          <div class="title">Championship Game Winner</div>
-    
-          <div class='game gameTwo' *ngFor="let winningNum of winningNumsTable" >
-              <div *ngIf="winningNum.round == 'champ-game'">
-            <div class="row">
-                <!-- Round: {{winningNum.round}} -->
-                <!-- <br> -->
-                Winning Name: {{winningNum.user}} 
-                <!-- <br> -->
-                <!-- Winner Square: {{winningNum.squareWinner}} -->
-                <!-- <br> -->
-                <!-- Loser Square: {{winningNum.squareLoser}} -->
-                <br>
-                Winning Team: {{winningNum.winningScore}}
-                <br>
-                Losing Team: {{winningNum.losingScore}}
-                <br><br>
-              </div>
-            </div>
-          </div>
-  
-
-</div>
-
-<br>
-<br>
 
 
 

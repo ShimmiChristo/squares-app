@@ -5,22 +5,105 @@
 <div class="column-container">
       <div class="column">
         <div class="title">
-              Winner
+              Round 1
         </div>
         <div class='' *ngFor="let winningNum of winningNumsTable" >
-          <div class="row">
-            {{winningNum.user}}
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="title">
-              Money Won
-        </div>
-        <div class='' *ngFor="let winningNum of winningNumsTable" >
+          <div *ngIf="winningNum.money == 5">
             <div class="row">
-              ${{winningNum.money}}
+              <div class="cell">
+                {{winningNum.user}}
+              </div>
+              <div class="cell">
+                ${{winningNum.money}}
+              </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="column">
+        <div class="title">
+              Round 2
+        </div>
+        <div class='' *ngFor="let winningNum of winningNumsTable" >
+            <div *ngIf="winningNum.money == 10">
+              <div class="row">
+                <div class="cell">
+                  {{winningNum.user}}
+                </div>
+                <div class="cell">
+                  ${{winningNum.money}}
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="title">
+                Round 3
+          </div>
+          <div class='' *ngFor="let winningNum of winningNumsTable" >
+              <div *ngIf="winningNum.money == 20">
+                <div class="row">
+                  <div class="cell">
+                    {{winningNum.user}}
+                  </div>
+                  <div class="cell">
+                    ${{winningNum.money}}
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="column">
+          <div class="title">
+                Round 4
+          </div>
+          <div class='' *ngFor="let winningNum of winningNumsTable" >
+              <div *ngIf="winningNum.money == 40">
+                <div class="row">
+                  <div class="cell">
+                    {{winningNum.user}}
+                  </div>
+                  <div class="cell">
+                    ${{winningNum.money}}
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="column">
+          <div class="title">
+                Final Games
+          </div>
+          <div class='' *ngFor="let winningNum of winningNumsTable" >
+              <div *ngIf="winningNum.money == 80">
+                <div class="row">
+                  <div class="cell">
+                    {{winningNum.user}}
+                  </div>
+                  <div class="cell">
+                    ${{winningNum.money}}
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="title">
+                  Champion!
+            </div>
+            <div class='' *ngFor="let winningNum of winningNumsTable" >
+                <div *ngIf="winningNum.money == 200">
+                  <div class="row">
+                    <div class="cell">
+                      {{winningNum.user}}
+                    </div>
+                    <div class="cell">
+                      ${{winningNum.money}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
 </div>
