@@ -96,6 +96,7 @@ export class WinnersComponent implements OnInit {
                         });
                     }
                     if(games.round == 'final-games') {
+                      console.log(this);
                       this.winningNumsTable.push({
                           'round': games.round,
                           'money': 80,
