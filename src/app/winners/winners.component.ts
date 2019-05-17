@@ -96,10 +96,20 @@ export class WinnersComponent implements OnInit {
                         });
                     }
                     if(games.round == 'final-games') {
-                      console.log(this);
                       this.winningNumsTable.push({
                           'round': games.round,
                           'money': 80,
+                          'user': nums.user, 
+                          'squareWinner': nums.teamX,
+                          'squareLoser': nums.teamY, 
+                          'winningScore': games.winningScore, 
+                          'losingScore': games.losingScore
+                        });
+                    }
+                    if(games.round == 'champ-game') {
+                      this.winningNumsTable.push({
+                          'round': games.round,
+                          'money': 200,
                           'user': nums.user, 
                           'squareWinner': nums.teamX,
                           'squareLoser': nums.teamY, 

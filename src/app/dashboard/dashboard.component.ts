@@ -30,7 +30,6 @@ export class DashboardComponent implements OnInit {
 
   getSquares(): void {
     this.gameService.getSquares()
-      // .subscribe(squaresTable => this.squaresTable = squaresTable)
       .subscribe(squaresTable => { this.squaresTable = squaresTable
         var winningRows = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
         this.squaresTable.forEach((square, i) => {
@@ -50,7 +49,6 @@ export class DashboardComponent implements OnInit {
 
             if(winningCols.includes(j)) {
               for (var ten=0; ten < 100; ten += 10) {
-                // console.log(squaresTable[j]);
                 if (squaresTable[j].teamX != squareCol.teamX) {
                   squaresTable[j].teamX = squareCol.teamX;
                   this.gameService.updateSquare(squaresTable[j])
@@ -59,20 +57,11 @@ export class DashboardComponent implements OnInit {
                 j += 10;
               }
             }
-          //   square.teamX = squaresTable[0].teamX;
-          //   this.gameService.updateSquare(square)
-          //   .subscribe(squaresTable => this.squaresTable = squaresTable);
-
         })
       })
 }
 
   getWinningNums(): void {
-    // this.gameService.getWinningNums()
-      // .subscribe(winningNumsTable => this.winningNumsTable = winningNumsTable);
-    // teamOne = teamOne.trim();
-    // teamTwo = teamTwo.trim();
-    // if (!teamOne || !teamTwo) { return; }
     this.winningNumsTable = [];
 
     this.gameService.getSquares()
@@ -86,10 +75,7 @@ export class DashboardComponent implements OnInit {
                 games.teamTwo.toString().substr(-1) == nums.teamY.toString() ) {
                   this.gameService.getWinningNums()
                   .subscribe(game => {
-                    // if (this.winningNumsTable.findIndex(x => x.id == nums.id) === -1){
                       this.winningNumsTable.push(nums);
-                      // console.log(this.winningNumsTable);
-                    // }
                     });
                   }
               })
