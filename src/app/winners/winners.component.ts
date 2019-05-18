@@ -117,7 +117,6 @@ export class WinnersComponent implements OnInit {
                           'losingScore': games.losingScore
                         });
                     }
-
                     }
                  })
               })
