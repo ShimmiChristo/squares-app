@@ -44,7 +44,7 @@ export class GameResultsComponent implements OnInit {
   }
 
   getWinningNums(): void {
-    this.winningNumsTable = [];
+    // this.winningNumsTable = [];
 
     this.gameService.getSquares()
       .subscribe(squaresTable => this.squaresTable = squaresTable);

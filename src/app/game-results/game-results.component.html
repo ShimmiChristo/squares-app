@@ -85,13 +85,22 @@
   <div class="title">Championship Game</div>
   <div class='ncaa-score' *ngFor="let ncaa of ncaaTable; let i = index" >
     <div class='ncaa-score' *ngFor="let game of ncaa; let j = index" >
-        <div *ngIf="game.round == 'champ-game'">
-            <div class="row">
-                {{game.winner}}  {{game.winningScore}} ---  {{game.loser}}  {{game.losingScore}}
-        </div>  
+      <div *ngIf="game.round == 'champ-game'">
+          <div class="row">
+              {{game.winner}}  {{game.winningScore}} ---  {{game.loser}}  {{game.losingScore}}
+
+              <div class='' *ngFor="let winningNum of winningNumsTable" >
+                  <div *ngIf="winningNum.money == 200">
+                      <div class="cell">
+                        {{winningNum.user}} --- ${{winningNum.money}}
+                      </div>
+                  </div>
+                </div>
+          </div>  
       </div>  
     </div>
   </div>
+ 
 
 </div>
 
