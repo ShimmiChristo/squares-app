@@ -12,7 +12,7 @@ import { GameService } from '../game.service';
 export class WinnersComponent implements OnInit {
   gameTable: Gameresults[];
   squaresTable: Squareresults[];
-  winningNumsTable: any[];
+  winningNumsTable: Winningnumbers[];
   ncaaTable: any[];
   editCell: any;
 

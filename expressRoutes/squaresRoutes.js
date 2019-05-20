@@ -68,6 +68,7 @@ squaresRoutes.route('/update/:id').put(function (req, res) {
       square.user = req.body.user;
       square.teamY = req.body.teamY;
       square.teamX = req.body.teamX;
+      square.money = req.body.money;
 
       square.save().then(square => {
           res.json('Update complete');
