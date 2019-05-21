@@ -1,27 +1,37 @@
-# SquaresApp
+# Squares App Development
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
+The Squares App is a game, commonly known as football squares or squares game. 
+The game consists of a grid of 100 columns and 10 rows, 2 sports teams, and X amount of users. 
 
-## Development server
+One team is assigned to the columns and one team is assigned to the rows. Each column is randomly assigned a number 0 through 9. Each row is
+randomly assigned a number 0 through 9. Assign each cell a user's name. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+After all the cells have been filled with users, we now wait for the games to be played. 
 
-## Code scaffolding
+The last digit of team X's score (the team of the columns) and the last digit of team Y's score (the team of the rows) determines the winning cell. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Depending on the preference of the group, the winning numbers can be at the end of periods, quarters, and/or games. 
 
-## Build
+The squares game is the popular games during the Super Bowl. There are two teams and a grid of 10 rows by 10 columns. 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+During the Super Bowl, the squares game is very popular. 
+During the NCAA basketball tournament, I want to know the scores of each games. Since NCAA.com does not have an open source API, I decided to scrape the data from their site. 
 
-## Running unit tests
+Using this data, I can create a website or web app. Since I am pulling the data dynamically, I do not have to update the database after every game.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+The URL I used to scrape the scores - [2019 Mens NCAA Official Bracket](https://www.ncaa.com/brackets/basketball-men/d1/2019)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Running the tests
 
-## Further help
+```
+node server.js
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Built With
+
+* [Angular CLI](https://cli.angular.io/) - Development tool and library specialized for Angular.
+* [Express](https://github.com/expressjs/express) - Web framework for node.
+* [request-promise](https://github.com/request/request-promise) - A simplified HTTP request with Promise support. Used to scrape the HTML from a URL.  
+* [cheerio](https://github.com/cheeriojs/cheerio) - jQuery designed specifically for the server. Used to parse the HTML. 
