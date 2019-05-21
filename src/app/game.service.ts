@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Gameresults, Squareresults, Winningnumbers, Ncaaresults } from './game-results';
+import { Gameresults, Squareresults, Winningnumbers, Ncaaresults, Winningusers } from './game-results';
 // import { GAMERESULTSTABLE } from './mock-game-results';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
@@ -51,8 +51,8 @@ export class GameService {
       );
   }
 
-  highlightWinners(): Observable<Winningnumbers[]> {
-    return this.http.get<Winningnumbers[]>(this.winningNumsUrl)
+  getWinningUsers(): Observable<Winningusers[]> {
+    return this.http.get<Winningusers[]>(this.winningNumsUrl)
       .pipe (
         tap(_=> this.log('highlighted winners')),
         catchError(this.handleError('highlightWinners', []))

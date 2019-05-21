@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Gameresults, Squareresults, Winningnumbers, Ncaaresults } from '../game-results';
+import { Gameresults, Squareresults, Winningnumbers, Winningusers } from '../game-results';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { GameService } from '../game.service';
@@ -12,7 +12,7 @@ import { GameService } from '../game.service';
 export class WinnersComponent implements OnInit {
   gameTable: Gameresults[];
   squaresTable: Squareresults[];
-  winningNumsTable: Winningnumbers[];
+  winningNumsTable: Winningusers[];
   ncaaTable: any[];
   editCell: any;
 

@@ -24,15 +24,25 @@ export class Squareresults {
 }
 
 export class Winningnumbers {
-    _id: string;
+    _id?: string;
+    game?: number;
+    user?: string;
+    teamY?: number;
+    teamX?: number;
+    round?: string; 
+    money?: number = 0; //adding a question mark makes it optional
+    squareWinner?: number;
+    squareLoser?: number;
+    winningScore?: any;
+    losingScore?: any;
+}
+
+export class Winningusers {
     round: string;
-    money: number;
+    money: number = 0;
     user: string;
     squareWinner: number;
     squareLoser: number;
-    winningScore: number;
-    losingScore: number;
-    game: number;
-    teamY: number;
-    teamX: number;
+    winningScore: any;
+    losingScore: any;
 }
