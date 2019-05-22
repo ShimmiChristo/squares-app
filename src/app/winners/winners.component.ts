@@ -15,6 +15,7 @@ export class WinnersComponent implements OnInit {
   winningNumsTable: Winningnumbers[];
   ncaaTable: any[];
   editCell: any;
+  userList: any[];
 
   constructor(
     private route: ActivatedRoute,
@@ -35,15 +36,25 @@ export class WinnersComponent implements OnInit {
 
   getWinningNums(): void {
     this.winningNumsTable = [];
+    this.userList = [];
 
     this.gameService.getSquares()
-      .subscribe(squaresTable => this.squaresTable = squaresTable);
+      .subscribe(squaresTable => {
+        this.squaresTable = squaresTable
+        this.squaresTable.forEach(square => {
+          this.winningNumsTable.push({
+            'user': square.user,
+            'money': 0
+          })
+        })
+      });
       
     this.gameService.getNCAA()
       .subscribe((ncaaTable : any[]) => { this.ncaaTable = ncaaTable;
         for (var i=0; i < ncaaTable.length; i++) {
           ncaaTable[i].forEach(games => {
             this.squaresTable.forEach(nums => {
+
               // if the last digit of the winning score matches the column number and the last digit of the losing score matches the row number
               if (games.winningScore.toString().substr(-1) == nums.teamX.toString() && 
                   games.losingScore.toString().substr(-1) == nums.teamY.toString() ) {
