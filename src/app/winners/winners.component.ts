@@ -3,6 +3,7 @@ import { Gameresults, Squareresults, Winningnumbers, Winningusers } from '../gam
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { GameService } from '../game.service';
+import { compileNgModule } from '@angular/core/src/render3/jit/module';
 
 @Component({
   selector: 'app-winners',
@@ -42,13 +43,14 @@ export class WinnersComponent implements OnInit {
       .subscribe(squaresTable => {
         this.squaresTable = squaresTable
         this.squaresTable.forEach(square => {
-          for (var key in square) {
-            console.log(key + square[key]);
+          console.log(square);
+          let foundName = this.userList.some( el => el.user === square.user);
+          if (!foundName) {
+            this.userList.push({
+              'user': square.user,
+              'money': 0
+            })
           }
-          this.winningNumsTable.push({
-            'user': square.user,
-            'money': 0
-          })
         })
       });
       
