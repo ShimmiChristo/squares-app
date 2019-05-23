@@ -42,6 +42,9 @@ export class WinnersComponent implements OnInit {
       .subscribe(squaresTable => {
         this.squaresTable = squaresTable
         this.squaresTable.forEach(square => {
+          for (var key in square) {
+            console.log(key + square[key]);
+          }
           this.winningNumsTable.push({
             'user': square.user,
             'money': 0
@@ -61,6 +64,7 @@ export class WinnersComponent implements OnInit {
                     this.gameService.getWinningNums()
                       //hard coding in each round of money. Need to create admin area to determine money values. 
                       if(games.round == 'round-1') {
+
                         this.winningNumsTable.push({
                             'round': games.round,
                             'money': 5,
