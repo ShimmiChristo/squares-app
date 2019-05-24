@@ -17,6 +17,7 @@ export class WinnersComponent implements OnInit {
   ncaaTable: any[];
   editCell: any;
   userList: any[];
+  finalWinners: any[];
 
   constructor(
     private route: ActivatedRoute,
@@ -38,12 +39,13 @@ export class WinnersComponent implements OnInit {
   getWinningNums(): void {
     this.winningNumsTable = [];
     this.userList = [];
+    this.finalWinners = [];
 
     this.gameService.getSquares()
       .subscribe(squaresTable => {
         this.squaresTable = squaresTable
         this.squaresTable.forEach(square => {
-          console.log(square);
+          // console.log(square);
           let foundName = this.userList.some( el => el.user === square.user);
           if (!foundName) {
             this.userList.push({
@@ -64,20 +66,59 @@ export class WinnersComponent implements OnInit {
               if (games.winningScore.toString().substr(-1) == nums.teamX.toString() && 
                   games.losingScore.toString().substr(-1) == nums.teamY.toString() ) {
                     this.gameService.getWinningNums()
+
+                    // this.userList.forEach(user => {
+                    // })
+
+                      // console.log(user);
                       //hard coding in each round of money. Need to create admin area to determine money values. 
                       if(games.round == 'round-1') {
-
-                        this.winningNumsTable.push({
-                            'round': games.round,
-                            'money': 5,
-                            'user': nums.user, 
-                            'squareWinner': nums.teamX,
-                            'squareLoser': nums.teamY, 
-                            'winningScore': games.winningScore, 
-                            'losingScore': games.losingScore
-                          });
+                        let c = {};
+                        c["money"] = 5;
+                        for (var k in this.userList) {
+                          console.log(k);
+                          if(this.userList[k] = 'money'){
+                            // console.log(this.userList[k]);
+                            c[k] = this.userList[k] + 5;
+                          }
+                          else { c[k] = this.userList[k]}
+                        }
+                        // for (var k in games) {
+                        //   if(typeof nums[k] != 'undefined'){  
+                        //     c[k] = games[k] + nums[k]  
+                        //   }
+                        //   else{ c[k] = games[k]}
+                        // }
+                        // // copy remaining values of b (which were not common)
+                        // for(var k in nums){
+                        //   if(typeof c[k]== 'undefined'){
+                        //     c[k] = nums[k]
+                        //   }
+                        // }
+                        // console.log(c); 
+                        this.winningNumsTable.push(c);
+                        // this.winningNumsTable.push({
+                        //     'round': games.round,
+                        //     'money': 5,
+                        //     'user': nums.user, 
+                        //     'squareWinner': nums.teamX,
+                        //     'squareLoser': nums.teamY, 
+                        //     'winningScore': games.winningScore, 
+                        //     'losingScore': games.losingScore
+                        //   });
                       }
+
+
                       if(games.round == 'round-2') {
+                        let c = {};
+                        // c["money"] = 10;
+                        for (var k in nums) {
+                          if(nums[k] == 'money'){
+                            c[k] = nums[k] + 10;
+                          }
+                          else { c[k] = nums[k]}
+                        }
+                        // console.log(c);
                         this.winningNumsTable.push({
                             'round': games.round,
                             'money': 10,
