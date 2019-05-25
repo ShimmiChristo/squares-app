@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { GameService } from '../game.service';
 import { compileNgModule } from '@angular/core/src/render3/jit/module';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-winners',
@@ -50,7 +51,7 @@ export class WinnersComponent implements OnInit {
           if (!foundName) {
             this.userList.push({
               'user': square.user,
-              'money': 0
+              'money': + 5
             })
           }
         })
@@ -61,28 +62,25 @@ export class WinnersComponent implements OnInit {
         for (var i=0; i < ncaaTable.length; i++) {
           ncaaTable[i].forEach(games => {
             this.squaresTable.forEach(nums => {
+                // nums['money'] = 0;
 
               // if the last digit of the winning score matches the column number and the last digit of the losing score matches the row number
               if (games.winningScore.toString().substr(-1) == nums.teamX.toString() && 
                   games.losingScore.toString().substr(-1) == nums.teamY.toString() ) {
                     this.gameService.getWinningNums()
-
-                    // this.userList.forEach(user => {
-                    // })
-
-                      // console.log(user);
                       //hard coding in each round of money. Need to create admin area to determine money values. 
                       if(games.round == 'round-1') {
-                        let c = {};
-                        c["money"] = 5;
-                        for (var k in this.userList) {
-                          console.log(k);
-                          if(this.userList[k] = 'money'){
-                            // console.log(this.userList[k]);
-                            c[k] = this.userList[k] + 5;
-                          }
-                          else { c[k] = this.userList[k]}
-                        }
+                        
+                        // let c = {};
+                        // for (var k in nums) {
+                        //   console.log(nums);
+                        //   if(nums[k] != 'undefinded'){
+                        //     nums['money'] += 5;
+                        //     // console.log(nums[k]);
+                        //     c[k] = nums[k];
+                        //   }
+                        //   else { c[k] = games[k]}
+                        // }
                         // for (var k in games) {
                         //   if(typeof nums[k] != 'undefined'){  
                         //     c[k] = games[k] + nums[k]  
@@ -96,32 +94,39 @@ export class WinnersComponent implements OnInit {
                         //   }
                         // }
                         // console.log(c); 
-                        this.winningNumsTable.push(c);
-                        // this.winningNumsTable.push({
-                        //     'round': games.round,
-                        //     'money': 5,
-                        //     'user': nums.user, 
-                        //     'squareWinner': nums.teamX,
-                        //     'squareLoser': nums.teamY, 
-                        //     'winningScore': games.winningScore, 
-                        //     'losingScore': games.losingScore
-                        //   });
-                      }
-
-
-                      if(games.round == 'round-2') {
-                        let c = {};
-                        // c["money"] = 10;
-                        for (var k in nums) {
-                          if(nums[k] == 'money'){
-                            c[k] = nums[k] + 10;
-                          }
-                          else { c[k] = nums[k]}
+                        // this.winningNumsTable.push(c);
+                        // nums['money'] =+ 5;
+                        // console.log(nums);
+                        // let foundName = this.winningNumsTable.some( el => el.user === nums.user);
+                        // if (!foundName) {
+                            this.winningNumsTable.push({
+                              'round': games.round,
+                              'money': + 5,
+                              'user': nums.user, 
+                              'squareWinner': nums.teamX,
+                              'squareLoser': nums.teamY, 
+                              'winningScore': games.winningScore, 
+                              'losingScore': games.losingScore
+                            });
+                        // }
+                          
+                        // console.log(this.winningNumsTable);
                         }
+                        
+                        
+                      else if(games.round == 'round-2') {
+                        // let c = {};
+                        // // c["money"] = 10;
+                        // for (var k in nums) {
+                        //   if(nums[k] == 'money'){
+                        //     c[k] = nums[k] + 10;
+                        //   }
+                        //   else { c[k] = nums[k]}
+                        // }
                         // console.log(c);
                         this.winningNumsTable.push({
                             'round': games.round,
-                            'money': 10,
+                            'money': + 10,
                             'user': nums.user, 
                             'squareWinner': nums.teamX,
                             'squareLoser': nums.teamY, 
@@ -174,25 +179,46 @@ export class WinnersComponent implements OnInit {
                           });
                       }
                     }
+
+                    
                   })
                 })
             }
         })
-    // this.getMoneyAmounts();
+    this.getMoneyAmounts();
         
     }
 
 // trying to get winningNumsTable and display winners
     getMoneyAmounts() {
-      console.log(this.winningNumsTable);
-      console.log(this.winningNumsTable[2]);
-      // this.gameService.getWinningNums()
-      //     .subscribe(winningNumsTable => { this.winningNumsTable = winningNumsTable;
-      this.winningNumsTable.forEach(winner => {
-          console.log(winner);
-          console.log('something');
+      // console.log(this.winningNumsTable);
+      this.winningNumsTable.forEach(square => {
+        let foundName = this.userList.some( el => el.user === square.user);
+        if (!foundName) {
+          let c = {};
+          c["money"] = 10;
+          for (var k in square) {
+            if(square[k] == 'money'){
+              c[k] = square[k] + 10;
+            }
+            else { c[k] = square[k]}
+          }
+          console.log(c);
+          // this.userList.push({
+          //   'user': square.user,
+          //   'money': + 5
+          // })
+        }
+
       })
+      // console.log(this.winningNumsTable[2]);
+      // // this.gameService.getWinningNums()
+      // //     .subscribe(winningNumsTable => { this.winningNumsTable = winningNumsTable;
+      // this.winningNumsTable.forEach(winner => {
+      //     console.log(winner);
+      //     console.log('something');
       // })
+      // // })
     }
 
 }
