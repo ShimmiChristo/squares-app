@@ -29,7 +29,7 @@ export class Winningnumbers {
     user?: string;
     teamY?: number;
     teamX?: number;
-    round?: string; 
+    round?: any; 
     money?: number = 0; //adding a question mark makes it optional
     squareWinner?: number;
     squareLoser?: number;
