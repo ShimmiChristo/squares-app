@@ -31,6 +31,8 @@ ng serve
 ## Built With
 
 * [AWS](https://aws.amazon.com/) - Hosts the production site. 
+* [MongoDB Cloud](https://cloud.mongodb.com/user#/atlas/login) - Object tables used for the Database
+* [Mongoose](https://github.com/Automattic/mongoose) - MongoDB object modeling tool
 * [TypeScript](https://github.com/microsoft/TypeScript) - Compiles to readable, standards-based JavaScript. Standard for Angular CLI. 
 * [Angular CLI](https://cli.angular.io/) - Development tool and library specialized for Angular.
 * [NodeJS](https://github.com/nodejs/node) - JavaScript runtime built on Chrome's V8 JavaScript engine.
