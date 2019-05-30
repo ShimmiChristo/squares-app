@@ -1,3 +1,6 @@
+/* DashboardComponent's private CSS styles */
+@import './../app.component.scss';
+
 $gray: #e6e6ea;
 
 table {
@@ -105,9 +108,14 @@ ul {
   padding: 0;
 }
 li {
-  list-style: none;
+  // list-style: none;
   margin: 2px;
 }
+ol {
+  list-style: initial;
+  list-style-type: decimal;
+}
+
 .title {
   font-size: 20px;
 }

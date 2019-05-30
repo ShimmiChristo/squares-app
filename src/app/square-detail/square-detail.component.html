@@ -1,4 +1,21 @@
-<br>
+
+<div class="description">
+    <div class="title">
+      <h1>Game Details About</h1>
+    </div>
+    <div class="list">
+      <ol>
+        <li>
+          Insert your name and save. 
+        </li>
+        <li>
+          *Do not change the column and/or row number. 
+        </li>
+      </ol>
+      
+    </div>
+</div>
+
 
 <div *ngFor="let item of squaresTable; let i = index;"  [ngClass]="{'active': true}">
     <div *ngIf ="item._id == square._id && i == 0 || item._id == square._id && i == 10 || item._id == square._id && i == 20
