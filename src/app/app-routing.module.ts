@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'detail/:id', component: GameDetailComponent },
   { path: 'square/:id', component: SquareDetailComponent },
   { path: 'delete/:id', component: GameResultsComponent },
-  { path: 'api', redirectTo: 'http://localhost:4000/api/games' }
+  { path: 'api', redirectTo: 'http://184.72.119.160:4000/api/games' }
 ];
 
 @NgModule({
