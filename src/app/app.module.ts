@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component'; // <-- NgM
 import { HttpClientModule }    from '@angular/common/http';
 import { SquareDetailComponent } from './square-detail/square-detail.component';
 import { WinnersComponent } from './winners/winners.component';
+import { AboutComponent } from './about/about.component';
 
 // import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { InMemoryDataService }  from './in-memory-data.service';
@@ -24,7 +25,8 @@ import { WinnersComponent } from './winners/winners.component';
     MessagesComponent,
     DashboardComponent,
     SquareDetailComponent,
-    WinnersComponent
+    WinnersComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

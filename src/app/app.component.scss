@@ -16,10 +16,13 @@ html, body, div, h1, h2, h3, h4, h5, p, a {
 }
 
 h1 {
-  // color: #369;
   color: $blue;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 40px;
+}
+h2 {
+  color: $red;
+  font-size: 26px;
 }
 table {
   font-family: arial, sans-serif;
@@ -59,4 +62,7 @@ nav > ul > li {
 ol {
   list-style: initial;
   list-style-type: decimal;
+}
+li {
+  margin-bottom: 5px;
 }

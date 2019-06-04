@@ -19,10 +19,10 @@ const httpDelete = {
 @Injectable({ providedIn: 'root' })
 export class GameService {
   // private gamesUrl = 'api/GAMERESULTSTABLE';  // URL to web api
-  private ncaaURL = 'http://184.72.119.160:4000/api/ncaa';
-  private gamesUrl = 'http://184.72.119.160:4000/api/games';
-  private squaresUrl = 'http://184.72.119.160:4000/api/squares';
-  private winningNumsUrl = 'http://184.72.119.160:4000/api/winners';
+  private ncaaURL = 'api/ncaa';
+  private gamesUrl = 'api/games';
+  private squaresUrl = 'api/squares';
+  private winningNumsUrl = 'api/winners';
 
 
   constructor(

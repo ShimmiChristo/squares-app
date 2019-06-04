@@ -20,7 +20,7 @@ const express = require('express'),
     const app = express();
     app.use(bodyParser.json());
     app.use(cors());
-    const port = process.env.PORT || 4000;
+    const port = process.env.PORT || 8080;
 
     app.use('/api/games', gameRoutes);
     app.use('/api/ncaa', ncaaGameRoutes);

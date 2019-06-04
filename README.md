@@ -28,9 +28,16 @@ node server.js
 ng serve
 ```
 
+## running the build
+
+```
+ng build --prod --base-href http//:URL
+```
+
 ## Built With
 
 * [AWS](https://aws.amazon.com/) - Hosts the production site. 
+* [Nginx Server](https://nginx.org/en/docs/) - Server used on AWS. 
 * [MongoDB Cloud](https://cloud.mongodb.com/user#/atlas/login) - Object tables used for the Database
 * [Mongoose](https://github.com/Automattic/mongoose) - MongoDB object modeling tool
 * [TypeScript](https://github.com/microsoft/TypeScript) - Compiles to readable, standards-based JavaScript. Standard for Angular CLI. 

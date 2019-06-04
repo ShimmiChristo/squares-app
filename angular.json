@@ -61,7 +61,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "squares-app:build"
+            "browserTarget": "squares-app:build",
           },
           "configurations": {
             "production": {
