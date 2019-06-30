@@ -3,11 +3,13 @@
 
 # _resources file
 _resources/
+/_resources
 
 # compiled output
 /dist
 /tmp
 /out-tsc
+/config
 
 # dependencies
 /node_modules
@@ -15,6 +17,9 @@ _resources/
 # profiling files
 chrome-profiler-events.json
 speed-measure-plugin.json
+package.json
+package-lock.json
+package-config.json
 
 # IDEs and editors
 /.idea
@@ -42,6 +47,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+
 
 # System Files
 .DS_Store
